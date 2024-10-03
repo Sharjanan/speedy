@@ -1,6 +1,9 @@
-import { StyleSheet, Text, View , SafeAreaView, Image} from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions } from 'react-native';
+import React from 'react';
 import tw from 'twrnc';
+
+// Get the width of the screen
+const { width } = Dimensions.get('window');
 
 const HomeScreen = () => {
   return (
@@ -9,20 +12,18 @@ const HomeScreen = () => {
         <Image 
           style={styles.image}  // Add style here
           source={require('../assets/pneuspeedy-removebg-preview.png')}
-         
         />
       </View>
     </SafeAreaView>
-  )
+  );
 }
 
-export default HomeScreen
+export default HomeScreen;
 
 const styles = StyleSheet.create({
-
   image: {
-    width: 100,  // Specify the width of the image
-    height: 100, // Specify the height of the image
-    resizeMode: 'contain', // Makes sure the image fits within the specified dimensions
+    width: width,  // Full screen width
+    height: width * 0.5,  // Maintain a specific aspect ratio (e.g., 50% of the width)
+    resizeMode: 'contain',  // Scale the image to fit within the width while maintaining aspect ratio
   },
-})
+});
