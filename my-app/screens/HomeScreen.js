@@ -1,16 +1,18 @@
-import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions } from 'react-native';
 import React from 'react';
+import { StyleSheet, View, SafeAreaView, Image, Dimensions } from 'react-native';
 import tw from 'twrnc';
+import { useMediaQuery } from 'react-responsive';
 
-// Get the width of the screen
 const { width } = Dimensions.get('window');
 
 const HomeScreen = () => {
+  const isDesktop = useMediaQuery({ minWidth: 1224 });
+
   return (
     <SafeAreaView style={tw`bg-red-100 h-full`}>
-      <View>
+      <View style={isDesktop ? styles.desktopContainer : styles.mobileContainer}>
         <Image 
-          style={styles.image}  // Add style here
+          style={styles.image}
           source={require('../assets/pneuspeedy-removebg-preview.png')}
         />
       </View>
@@ -18,12 +20,24 @@ const HomeScreen = () => {
   );
 }
 
-export default HomeScreen;
-
 const styles = StyleSheet.create({
+  desktopContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  mobileContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+  },
   image: {
-    width: width,  // Full screen width
-    height: width * 0.5,  // Maintain a specific aspect ratio (e.g., 50% of the width)
-    resizeMode: 'contain',  // Scale the image to fit within the width while maintaining aspect ratio
+    width: width,
+    height: width * 0.5,
+    resizeMode: 'contain',
   },
 });
+
+export default HomeScreen;
