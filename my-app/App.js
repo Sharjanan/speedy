@@ -23,7 +23,7 @@ const App = () => {
               headerTitle: props => (
                 <Image 
                   source={require('./assets/pneuspeedy-removebg-preview.png')}
-                  style={isDesktop ? styles.desktopImage : styles.mobileImage}
+                  //style={isDesktop ? styles.desktopImage : styles.mobileImage}
                 />
               ) 
             }}
