@@ -46,16 +46,18 @@ export function StickyNavbar() {
  
   return (
     <div className="-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
-      <Navbar className="sticky top-0 z-10 h-18 max-w-full rounded-none px-4 py-0 lg:px-8 lg:py-4">
-        <div className="flex items-center justify-between text-blue-gray-900">
+      <Navbar className="sticky top-0 z-10 h-40 max-w-full rounded-none px-4 py-0 lg:px-8 lg:py-0">
+      <div className="flex items-center justify-between text-blue-gray-900">
+      <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
           <img
             alt="Logo"
             className="ml-4 cursor-pointer "
             src="../assets/pneuspeedy-removebg-preview.png"
-            style={{ width: '10%', height: '10%' }}
+            style={{width: '200px', height: 'auto'}}
           />
-          <div className="flex items-center gap-4">
-            <div className="mr-4 hidden lg:block">{navList}</div>
+        </div>
+          <div className="flex items-center gap-4 ">
+            <div className="mr-4 hidden lg:block ">{navList}</div>
             <div className="flex items-center gap-x-1">
               <Button
                 variant="text"
@@ -67,7 +69,7 @@ export function StickyNavbar() {
               <Button
                 variant="gradient"
                 size="sm"
-                className="hidden lg:inline-block"
+                className="hidden lg:inline-block mr-4"
               >
                 <span>(514) 624-0229</span>
               </Button>
