@@ -10,9 +10,9 @@ export default function App() {
   return (
     <Provider store={store}>
 
-      <Footer/>
-        <Navigator />
-        <Button >Material Tailwind Button</Button>
+        <Footer/>
+
+  
     </Provider>
   );
 }
