@@ -1,28 +1,38 @@
-import { StyleSheet, Text, View , SafeAreaView, Image} from 'react-native'
-import React from 'react'
+import React from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions } from 'react-native';
 import tw from 'twrnc';
+
+// Get the width of the screen
+const { width, height } = Dimensions.get('window');
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={tw`bg-red-100 h-full`}>
-      <View>
+    <SafeAreaView style={[styles.container, tw`bg-red-100`]}>
+      <View style={styles.imageContainer}>
         <Image 
-          style={styles.image}  // Add style here
+          style={styles.image}
           source={require('../assets/pneuspeedy-removebg-preview.png')}
-         
+          resizeMode="contain"
         />
       </View>
     </SafeAreaView>
-  )
+  );
 }
 
-export default HomeScreen
+export default HomeScreen;
 
 const styles = StyleSheet.create({
-
-  image: {
-    width: 100,  // Specify the width of the image
-    height: 100, // Specify the height of the image
-    resizeMode: 'contain', // Makes sure the image fits within the specified dimensions
+  container: {
+    flex: 1,
   },
-})
+  imageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: '80%',  // Use percentage-based width
+    height: undefined,
+    aspectRatio: 2,  // Maintain aspect ratio
+  },
+});
