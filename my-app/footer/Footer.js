@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    height: 100,
+    height: 150,
   },
   logoContainer: {
     flex: 1,
