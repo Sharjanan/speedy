@@ -1,18 +1,9 @@
 import React from "react";
 import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Image,
   Dimensions,
 } from "react-native";
 import {
-  Navbar,
-  MobileNav,
   Typography,
-  Button,
-  IconButton,
   Card,
 } from "@material-tailwind/react";
 import tw from "twrnc";

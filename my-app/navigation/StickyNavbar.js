@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   IconButton,
-  Card,
 } from "@material-tailwind/react";
 import logo from "../assets/pneuspeedy-removebg-preview.png";
 
