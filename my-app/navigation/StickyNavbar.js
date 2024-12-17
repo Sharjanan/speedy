@@ -59,7 +59,7 @@ export function StickyNavbar() {
       <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
           <img
             alt="Logo"
-            className="lg:ml-4 cursor-pointer mt-[-50px]"
+            className="lg:ml-4 cursor-pointer mt-[-40px]"
             src="../assets/pneuspeedy-removebg-preview.png"
             // style={{width: 'auto', height: '100%'}}
           />
@@ -92,7 +92,7 @@ export function StickyNavbar() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  className="h-6 w-6"
+                  className="h-6 w-6 "
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -121,9 +121,10 @@ export function StickyNavbar() {
             </IconButton>
           </div>
         </div>
+        <div className="bg-gray-500 rounded">
         <MobileNav open={openNav}>
           {navList}
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center gap-x-1 ">
             <Button fullWidth variant="text" size="sm" className="">
               <span>FR</span>
             </Button>
@@ -132,6 +133,7 @@ export function StickyNavbar() {
             </Button>
           </div>
         </MobileNav>
+        </div>
       </Navbar>
     
 

@@ -14,7 +14,7 @@ const HomeScreen = () => {
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
             <Typography variant="h2" className="text-4xl font-bold">
-              STOP WAINTING AT GARAGES!
+              STOP WAITING AT GARAGES!
             </Typography>
             <Typography variant="h1" className="text-5xl font-extrabold mt-2">
               MOBILE TIRE SERVICE
