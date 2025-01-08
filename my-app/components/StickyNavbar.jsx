@@ -19,7 +19,7 @@ export function StickyNavbar() {
   }, []);
 
   const navList = (
-    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 " >
       <Typography
         as="li"
         variant="small"
@@ -84,10 +84,12 @@ export function StickyNavbar() {
             </div>
             <IconButton
               variant="text"
+              aria-label="Toggle navigation"
               className=" h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
               ripple={false}
               onClick={() => setOpenNav(!openNav)}
             >
+              
               {openNav ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -121,8 +123,8 @@ export function StickyNavbar() {
             </IconButton>
           </div>
         </div>
-        <div className="bg-gray-500 rounded">
-        <MobileNav open={openNav}>
+        <div className="bg-gray-500 rounded" >
+        <MobileNav open={openNav} data-testid="mobile-menu"  >
           {navList}
           <div className="flex items-center gap-x-1 ">
             <Button fullWidth variant="text" size="sm" className="">
