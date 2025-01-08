@@ -1,5 +1,4 @@
 import { Typography } from "@material-tailwind/react";
-import logo from "../assets/pneuspeedy-removebg-preview.png";
 
 const contactDetails = {
   phone: "(438) 299 7771",
@@ -8,8 +7,8 @@ const contactDetails = {
 };
 
 const links = [
-  ["Company","Services" ,"Privacy Policy"],
-  ["Our Pricing", "Blog","About Us"],
+  ["Company", "Services", "Privacy Policy"],
+  ["Our Pricing", "Blog", "About Us"],
 ];
 
 const currentYear = new Date().getFullYear();
@@ -17,80 +16,68 @@ const currentYear = new Date().getFullYear();
 export function Footer() {
   return (
     <footer className="bg-gray-900 px-8 py-16">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Left Section - Logo and Contact Info */}
-        <div className="flex flex-col gap-4 items-start">
-          <img src="../assets/pneuspeedy-removebg-preview.png" alt="Speedy Logo" className="h-20 w-auto" />
-          <div className="text-gray-500">
-            <div className="flex items-center gap-2">
-              <span>📞</span>
-              <Typography as="p" className="!text-gray-500">
-                {contactDetails.phone}
-              </Typography>
-            </div>
-            <div className="flex items-center gap-2">
-              <span>✉️</span>
-              <Typography as="p" className="!text-gray-500">
-                {contactDetails.email}
-              </Typography>
-            </div>
-            <div className="flex items-center gap-2">
-              <span>📍</span>
-              <Typography as="p" className="!text-gray-500">
-                {contactDetails.address}
-              </Typography>
-            </div>
-          </div>
-        </div>
-
-        {/* Center Section - Links */}
-        <div className="grid grid-cols-2 gap-8 text-center">
-          {links.map((column, columnIndex) => (
-            <div key={columnIndex} className="flex flex-col gap-2">
-              {column.map((link, index) => (
-                <Typography
-                  key={index}
-                  as="a"
-                  href="#"
-                  className="font-medium !text-gray-500 transition-colors hover:!text-gray-300"
-                >
-                  {link}
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-start gap-12">
+          {/* Contact Info */}
+          <div className="text-gray-500 md:w-1/2">
+            <h3 className="text-white font-semibold text-lg mb-6">Contact Us</h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 hover:text-gray-300 transition-colors">
+                <span className="w-5">📞</span>
+                <Typography as="a" href={`tel:${contactDetails.phone}`} className="!text-gray-500 hover:!text-gray-300">
+                  {contactDetails.phone}
                 </Typography>
-              ))}
+              </div>
+              <div className="flex items-center gap-3 hover:text-gray-300 transition-colors">
+                <span className="w-5">✉️</span>
+                <Typography as="a" href={`mailto:${contactDetails.email}`} className="!text-gray-500 hover:!text-gray-300">
+                  {contactDetails.email}
+                </Typography>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-5">📍</span>
+                <Typography as="a" 
+                  href={`https://maps.google.com/?q=${encodeURIComponent(contactDetails.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="!text-gray-500 hover:!text-gray-300">
+                  {contactDetails.address}
+                </Typography>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Links */}
+          <div className="grid grid-cols-2 gap-8 md:w-1/2">
+            {links.map((column, columnIndex) => (
+              <div key={columnIndex} className="flex flex-col gap-4">
+                <h3 className="text-white font-semibold text-lg mb-2">
+                  {columnIndex === 0 ? "Navigation" : "Resources"}
+                </h3>
+                {column.map((link, index) => (
+                  <Typography
+                    key={index}
+                    as="a"
+                    href="#"
+                    className="font-medium !text-gray-500 transition-colors hover:!text-gray-300 hover:translate-x-1 transform duration-200"
+                  >
+                    {link}
+                  </Typography>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Right Section - FAQ Placeholder */}
-     
-        <div className="text-white text-center">   
-        {/*
-          <Typography variant="h6" className="mb-4 font-bold">
-            F.A.Q
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t border-gray-800/50">
+          <Typography
+            color="blue-gray"
+            className="!text-sm !font-normal text-gray-500 text-center"
+          >
+            Copyright &copy; {currentYear} Speedy. All rights reserved.
           </Typography>
-          <div className="flex flex-col gap-2">
-            <Typography as="p" className="!text-gray-400">
-              + How can I book a car detailing appointment?
-            </Typography>
-            <Typography as="p" className="!text-gray-400">
-              + Can you detail my car at my home, office, or apartment?
-            </Typography>
-            <Typography as="p" className="!text-gray-400">
-              + How long does car detailing usually take?
-            </Typography>
-          </div>
-          */}
-        </div> 
-      </div>
-
-      {/* Footer Bottom */}
-      <div className="text-center mt-8">
-        <Typography
-          color="blue-gray"
-          className="!text-sm !font-normal text-gray-500"
-        >
-          Copyright &copy; {currentYear} Speedy
-        </Typography>
+        </div>
       </div>
     </footer>
   );
