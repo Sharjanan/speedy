@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import { StickyNavbar } from './navigation/StickyNavbar';
 import  HomeScreen  from './screens/HomeScreen';
-import  { Footer }  from './components/Footer';
+import  { Footer }  from './footer/Footer';
 
 export default function App() {
   return (

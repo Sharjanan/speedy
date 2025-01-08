@@ -1,80 +1,84 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { Typography } from "@material-tailwind/react";
 
-const Footer = () => {
-  return (
-    <View style={styles.footerContainer}>
-      <View style={styles.logoContainer}>
-        <Image
-          source={require('../assets/pneuspeedy-removebg-preview.png')}
-          style={styles.logoImage}
-          resizeMode="contain"
-        />
-      </View>
-
-      {/* Contact Info */}
-      <View style={styles.contactContainer}>
-        <View style={styles.contactRow}>
-          <FontAwesome name="phone" size={20} color="black" style={styles.icon} />
-          <Text style={styles.text}>(514) 624-0229</Text>
-        </View>
-
-        <View style={styles.contactRow}>
-          <FontAwesome name="envelope" size={20} color="black" style={styles.icon} />
-          <Text style={styles.text}>info@pneuspeedy.com</Text>
-        </View>
-
-        <View style={styles.contactRow}>
-          <FontAwesome name="map-marker" size={20} color="black" style={styles.icon} />
-          <Text style={styles.text}>Montreal, QC</Text>
-        </View>
-      </View>
-    </View>
-  );
+const contactDetails = {
+  phone: "(438) 299 7771",
+  email: "support@speedy.ca",
+  address: "4840 Rue Vittorio-Fiorucci, Saint-Laurent, QC H4R 0L5",
 };
 
-const styles = StyleSheet.create({
-  footerContainer: {
-    backgroundColor: '#f2f2f2', // Light gray background
-    padding: 20,
-    flexDirection: 'row', // Arrange logo and contact info horizontally
-    justifyContent: 'space-between', // Space between logo and contact info
-    alignItems: 'center',
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    height: 150,
-  },
-  logoContainer: {
-    flex: 1,
-    flexBasis: '30%', // Adjust as needed
-    alignItems: 'center',
-  },
-  contactContainer: {
-    flex: 1,
-    flexBasis: '70%', // Adjust as needed
-    alignItems: 'center',
-  },
-  logoImage: {
-    width: 150,
-    height: 150,
-    marginBottom: 20,
-  },
-  contactRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between', // Align items at the opposite ends
-    alignItems: 'center', // Vertical alignment
-    marginVertical: 5,
-  },
-  icon: {
-    marginRight: 10,
-  },
-  text: {
-    fontSize: 16,
-    color: 'black',
-    fontWeight: 'bold',
-  },
-});
+const links = [
+  ["Company", "Services", "Privacy Policy"],
+  ["Our Pricing", "Blog", "About Us"],
+];
 
-export default Footer;
+const currentYear = new Date().getFullYear();
+
+export function Footer() {
+  return (
+    <footer className="bg-gray-900 px-8 py-16">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-start gap-12">
+          {/* Contact Info */}
+          <div className="text-gray-500 md:w-1/2">
+            <h3 className="text-white font-semibold text-lg mb-6">Contact Us</h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 hover:text-gray-300 transition-colors">
+                <span className="w-5">📞</span>
+                <Typography as="a" href={`tel:${contactDetails.phone}`} className="!text-gray-500 hover:!text-gray-300">
+                  {contactDetails.phone}
+                </Typography>
+              </div>
+              <div className="flex items-center gap-3 hover:text-gray-300 transition-colors">
+                <span className="w-5">✉️</span>
+                <Typography as="a" href={`mailto:${contactDetails.email}`} className="!text-gray-500 hover:!text-gray-300">
+                  {contactDetails.email}
+                </Typography>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-5">📍</span>
+                <Typography as="a" 
+                  href={`https://maps.google.com/?q=${encodeURIComponent(contactDetails.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="!text-gray-500 hover:!text-gray-300">
+                  {contactDetails.address}
+                </Typography>
+              </div>
+            </div>
+          </div>
+
+          {/* Links */}
+          <div className="grid grid-cols-2 gap-8 md:w-1/2">
+            {links.map((column, columnIndex) => (
+              <div key={columnIndex} className="flex flex-col gap-4">
+                <h3 className="text-white font-semibold text-lg mb-2">
+                  {columnIndex === 0 ? "Navigation" : "Resources"}
+                </h3>
+                {column.map((link, index) => (
+                  <Typography
+                    key={index}
+                    as="a"
+                    href="#"
+                    className="font-medium !text-gray-500 transition-colors hover:!text-gray-300 hover:translate-x-1 transform duration-200"
+                  >
+                    {link}
+                  </Typography>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t border-gray-800/50">
+          <Typography
+            color="blue-gray"
+            className="!text-sm !font-normal text-gray-500 text-center"
+          >
+            Copyright &copy; {currentYear} Speedy. All rights reserved.
+          </Typography>
+        </div>
+      </div>
+    </footer>
+  );
+}
