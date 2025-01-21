@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Typography, Card } from "@material-tailwind/react";
-
+import tireImage from "../assets/tire-change.jpg";
 export function Welcome() {
   return (
     
@@ -8,7 +8,8 @@ export function Welcome() {
           <img
             alt="nature"
             className="h-[32rem] w-full object-cover object-center"
-            src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2717&q=80"
+            //src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2717&q=80"
+            src="../assets/tire-change.jpg"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
             <Typography variant="h2" className="text-4xl font-bold">
@@ -24,11 +25,21 @@ export function Welcome() {
               Our experts install your tires at your home or workplace.
             </Typography>
             <div className="flex gap-4 mt-4">
-              <Button fullWidth variant="text" size="sm" className="">
+              <Button 
+              fullWidth variant="text"
+              size="sm"
+              className="border border-white text-white rounded-lg font-extrabold mt-4 "
+              >
                 <span>BOOK APPOINTMENT</span>
               </Button>
-              <Button fullWidth variant="gradient" size="sm" className="">
-                <span>REQUEST A CALL BACK</span>
+              <Button 
+             fullWidth
+             variant="text"
+             size="sm"
+             className="border rounded-lg text-white font-extrabold mt-4"
+             style={{ borderColor: 'white', backgroundColor: '#A60E0E' }}
+              >
+                REQUEST A CALL BACK
               </Button>
             </div>
           </div>
