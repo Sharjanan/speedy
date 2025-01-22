@@ -186,10 +186,10 @@ export function RequestForm() {
               }}
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
-              <Option>sedan</Option>
-              <Option>suv</Option>
-              <Option>coupe</Option>
-              <Option>hatchback</Option>
+              <Option>Sedan</Option>
+              <Option>Suv</Option>
+              <Option>Coupe</Option>
+              <Option>Hatchback</Option>
               <Option>Pickup</Option>
               <Option>Truck</Option>
             </Select>
