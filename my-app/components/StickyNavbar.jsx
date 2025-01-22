@@ -75,9 +75,9 @@ export function StickyNavbar() {
                 <span>FR</span>
               </Button>
               <Button
-                variant="gradient"
+                variant="text"
                 size="sm"
-                className="hidden lg:inline-block mr-4"
+                className="hidden lg:inline-block border  rounded-lg font-extrabold mr-4"
               >
                 <span>(514) 624-0229</span>
               </Button>
