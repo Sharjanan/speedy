@@ -127,6 +127,8 @@ export function RequestForm() {
               }}
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
+              <Option>Tire Change with Rims</Option>
+              <Option>Tire Change without Rims</Option>
               <Option>Tire Change</Option>
               <Option>Oil Change</Option>
               <Option>General Mechanic</Option>
@@ -150,6 +152,9 @@ export function RequestForm() {
               <Option>sedan</Option>
               <Option>suv</Option>
               <Option>coupe</Option>
+              <Option>hatchback</Option>
+              <Option>Pickup</Option>
+              <Option>Truck</Option>
             </Select>
           </div>
           <div className="w-full">
