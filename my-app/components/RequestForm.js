@@ -29,11 +29,11 @@ export function RequestForm() {
   const years = Array.from({ length: 75 }, (_, i) => 2024 - i);
 
   const validateForm = () => {
-    if (!formData.email.includes('@')) {
+    if (!formData.email.includes("@")) {
       alert("Please enter a valid email address");
       return false;
     }
-    if (!formData.phone.replace(/[\s-]/g, '').match(/^\+?\d{10,}$/)) {
+    if (!formData.phone.replace(/[\s-]/g, "").match(/^\+?\d{10,}$/)) {
       alert("Please enter a valid phone number (minimum 10 digits)");
       return false;
     }
@@ -46,16 +46,16 @@ export function RequestForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSelectChange = (name, value) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -74,7 +74,7 @@ export function RequestForm() {
         city: "",
         postalCode: "",
         message: "",
-        address: ""
+        address: "",
       });
     } catch (error) {
       console.error("Error adding document: ", error);
@@ -166,7 +166,7 @@ export function RequestForm() {
           </div>
         </div>
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
-        <div className="w-full">
+          <div className="w-full">
             <Typography
               variant="small"
               color="blue-gray"
@@ -177,8 +177,8 @@ export function RequestForm() {
             <Input
               size="lg"
               placeholder="H1H 1H1"
-              name="phone"
-              value={formData.phone}
+              name="postalCode"
+              value={formData.postalCode}
               onChange={handleChange}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
             />
@@ -194,8 +194,8 @@ export function RequestForm() {
             <Input
               size="lg"
               placeholder="Montreal, QC"
-              name="phone"
-              value={formData.phone}
+              name="city"
+              value={formData.city}
               onChange={handleChange}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
             />
@@ -265,24 +265,18 @@ export function RequestForm() {
             </Select>
           </div>
         </div>
+
         
-    
-   
-      <div className="flex-grow">
-        {/* Form content goes here */}
-      </div>
-      <div className="mb-6 flex justify-center">
-        <Button
-          type="submit"
-          className="border rounded-lg text-white font-extrabold"
-          style={{ borderColor: 'white', backgroundColor: '#A60E0E' }}
-        >
-          Submit
-        </Button>
-      </div>
- 
-        
-      </div>
+        <div className="mb-6 flex justify-center">
+          <Button
+            type="submit"
+            className="border rounded-lg text-white font-extrabold"
+            style={{ borderColor: "white", backgroundColor: "#A60E0E" }}
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
     </section>
   );
 }
