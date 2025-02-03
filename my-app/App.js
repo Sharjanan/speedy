@@ -9,7 +9,7 @@ import  { Footer }  from './components/Footer';
 export default function App() {
   return (
     <Provider store={store}>
-       <div className="-m-6 max-h w-[calc(100%+48px)] overflow-scroll">
+       <div className="-m-6 max-h w-[calc(100%+48px)]">
         <StickyNavbar />
         <HomeScreen />
         <Footer />
