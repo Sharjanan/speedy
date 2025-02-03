@@ -49,10 +49,9 @@ export function RequestForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSelectChange = (name, value) => {
+  const handleSelectChange = (name) => (value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -213,14 +212,13 @@ export function RequestForm() {
             <Select
               size="lg"
               value={formData.serviceNeeded}
-              onChange={(e) => handleSelectChange("serviceNeeded", e)}
-              className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
+              onChange={handleSelectChange("serviceNeeded")}
             >
-              <Option>Tire Change with Rims</Option>
-              <Option>Tire Change without Rims</Option>
-              <Option>Tire Change</Option>
-              <Option>Oil Change</Option>
-              <Option>General Mechanic</Option>
+              <Option value="Tire Change with Rims">Tire Change with Rims</Option>
+              <Option value="Tire Change without Rims">Tire Change without Rims</Option>
+              <Option value="Tire Change">Tire Change</Option>
+              <Option value="Oil Change">Oil Change</Option>
+              <Option value="General Mechanic">General Mechanic</Option>
             </Select>
           </div>
           <div className="w-full">
@@ -234,15 +232,15 @@ export function RequestForm() {
             <Select
               size="lg"
               value={formData.carType}
-              onChange={(e) => handleSelectChange("carType", e)}
+              onChange={handleSelectChange("carType")}          
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
-              <Option>Sedan</Option>
-              <Option>Suv</Option>
-              <Option>Coupe</Option>
-              <Option>Hatchback</Option>
-              <Option>Pickup</Option>
-              <Option>Truck</Option>
+              <Option value="Sedan">Sedan</Option>
+              <Option value="Suv">SUV</Option>
+              <Option value="Coupe">Coupe</Option>
+              <Option value="Hatchback">Hatchback</Option>
+              <Option value="Pickup">Pickup</Option>
+              <Option value="Truck">Truck</Option>
             </Select>
           </div>
           <div className="w-full">
@@ -256,17 +254,16 @@ export function RequestForm() {
             <Select
               size="lg"
               value={formData.carYear}
-              onChange={(e) => handleSelectChange("carYear", e)}
+              onChange={handleSelectChange("carYear")}
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
               {years.map((year) => (
-                <Option key={year}>{year}</Option>
+                 <Option key={year} value={year}>{year}</Option>
               ))}
             </Select>
           </div>
         </div>
 
-        
         <div className="mb-6 flex justify-center">
           <Button
             type="submit"
