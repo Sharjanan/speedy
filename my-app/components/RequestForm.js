@@ -72,8 +72,7 @@ export function RequestForm() {
         carYear: "",
         city: "",
         postalCode: "",
-        message: "",
-        address: "",
+       
       });
     } catch (error) {
       console.error("Error adding document: ", error);
