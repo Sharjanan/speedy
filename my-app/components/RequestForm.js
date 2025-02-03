@@ -6,6 +6,10 @@ import {
   Typography,
   Select,
   Option,
+  Popover,
+  PopoverHandler,
+  PopoverContent,
+  Button,
   Spinner,
 } from "@material-tailwind/react";
 
@@ -161,6 +165,42 @@ export function RequestForm() {
             />
           </div>
         </div>
+        <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
+        <div className="w-full">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Postal Code
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="H1H 1H1"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
+            />
+          </div>
+          <div className="w-full">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              City
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="Montreal, QC"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
+            />
+          </div>
+        </div>
         <div className="mb-6 flex flex-col gap-4 md:flex-row">
           <div className="w-full">
             <Typography
@@ -176,6 +216,8 @@ export function RequestForm() {
               onChange={(e) => handleSelectChange("serviceNeeded", e)}
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
+              <Option>Tire Change with Rims</Option>
+              <Option>Tire Change without Rims</Option>
               <Option>Tire Change</Option>
               <Option>Oil Change</Option>
               <Option>General Mechanic</Option>
@@ -195,9 +237,12 @@ export function RequestForm() {
               onChange={(e) => handleSelectChange("carType", e)}
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
-              <Option>sedan</Option>
-              <Option>suv</Option>
-              <Option>coupe</Option>
+              <Option>Sedan</Option>
+              <Option>Suv</Option>
+              <Option>Coupe</Option>
+              <Option>Hatchback</Option>
+              <Option>Pickup</Option>
+              <Option>Truck</Option>
             </Select>
           </div>
           <div className="w-full">
@@ -220,32 +265,24 @@ export function RequestForm() {
             </Select>
           </div>
         </div>
-        <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
-          <div className="w-full">
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              City
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="Montreal, QC"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
-            />
-          </div>
-        </div>
-        <button
+        
+    
+   
+      <div className="flex-grow">
+        {/* Form content goes here */}
+      </div>
+      <div className="mb-6 flex justify-center">
+        <Button
           type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+          className="border rounded-lg text-white font-extrabold"
+          style={{ borderColor: 'white', backgroundColor: '#A60E0E' }}
         >
           Submit
-        </button>
-      </form>
+        </Button>
+      </div>
+ 
+        
+      </div>
     </section>
   );
 }
