@@ -1,6 +1,6 @@
-import React from "react";
-
-// @material-tailwind/react
+import React, { useState } from "react";
+import { db } from "../firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
 import {
   Input,
   Typography,
@@ -10,34 +10,88 @@ import {
   PopoverHandler,
   PopoverContent,
   Button,
+  Spinner,
 } from "@material-tailwind/react";
 
-// day picker
-import { format } from "date-fns";
-import { DayPicker } from "react-day-picker";
-
-// @heroicons/react
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-
 export function RequestForm() {
-  const [date, setDate] = React.useState();
-  // Generate years from 1950 to 2024
-  const years = [];
-  for (let year = 2024; year >= 1950; year--) {
-    years.push(year);
-  }
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "", // Changed to match Firestore
+    serviceNeeded: "",
+    carType: "",
+    carYear: "",
+    city: "",
+  });
+
+  const years = Array.from({ length: 75 }, (_, i) => 2024 - i);
+
+  const validateForm = () => {
+    if (!formData.email.includes("@")) {
+      alert("Please enter a valid email address");
+      return false;
+    }
+    if (!formData.phone.replace(/[\s-]/g, "").match(/^\+?\d{10,}$/)) {
+      alert("Please enter a valid phone number (minimum 10 digits)");
+      return false;
+    }
+    if (!formData.firstName || !formData.lastName) {
+      alert("Please enter both first and last name");
+      return false;
+    }
+    return true;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectChange = (name) => (value) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    try {
+      // Using the correct collection name from Firestore
+      await addDoc(collection(db, "AppointmentRequest"), formData);
+      alert("Request submitted successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        serviceNeeded: "",
+        carType: "",
+        carYear: "",
+        city: "",
+        postalCode: "",
+        message: "",
+        address: "",
+      });
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert(`Failed to submit request: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="px-8 py-20 container mx-auto">
       <Typography variant="h5" color="blue-gray">
-      REQUEST A CALL BACK
+        REQUEST A CALL BACK
       </Typography>
-      <Typography
-        variant="small"
-        className="text-gray-600 font-normal mt-1"
-      >
-        Update your profile information below.
+      <Typography variant="small" className="text-gray-600 font-normal mt-1">
+        Fill in your information below for a callback.
       </Typography>
-      <div className="flex flex-col mt-8">
+      <form className="flex flex-col mt-8" onSubmit={handleSubmit}>
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
             <Typography
@@ -50,9 +104,9 @@ export function RequestForm() {
             <Input
               size="lg"
               placeholder="Emma"
-              labelProps={{
-                className: "hidden",
-              }}
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
             />
           </div>
@@ -67,9 +121,9 @@ export function RequestForm() {
             <Input
               size="lg"
               placeholder="Roberts"
-              labelProps={{
-                className: "hidden",
-              }}
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
             />
           </div>
@@ -86,9 +140,9 @@ export function RequestForm() {
             <Input
               size="lg"
               placeholder="emma@mail.com"
-              labelProps={{
-                className: "hidden",
-              }}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
             />
           </div>
@@ -103,16 +157,15 @@ export function RequestForm() {
             <Input
               size="lg"
               placeholder="+1-514 123 456"
-              labelProps={{
-                className: "hidden",
-              }}
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
             />
           </div>
-          
         </div>
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
-        <div className="w-full">
+          <div className="w-full">
             <Typography
               variant="small"
               color="blue-gray"
@@ -123,9 +176,9 @@ export function RequestForm() {
             <Input
               size="lg"
               placeholder="H1H 1H1"
-              labelProps={{
-                className: "hidden",
-              }}
+              name="postalCode"
+              value={formData.postalCode}
+              onChange={handleChange}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
             />
           </div>
@@ -140,15 +193,14 @@ export function RequestForm() {
             <Input
               size="lg"
               placeholder="Montreal, QC"
-              labelProps={{
-                className: "hidden",
-              }}
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
               className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
             />
           </div>
         </div>
         <div className="mb-6 flex flex-col gap-4 md:flex-row">
-          
           <div className="w-full">
             <Typography
               variant="small"
@@ -159,16 +211,14 @@ export function RequestForm() {
             </Typography>
             <Select
               size="lg"
-              labelProps={{
-                className: "hidden",
-              }}
-              className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
+              value={formData.serviceNeeded}
+              onChange={handleSelectChange("serviceNeeded")}
             >
-              <Option>Tire Change with Rims</Option>
-              <Option>Tire Change without Rims</Option>
-              <Option>Tire Change</Option>
-              <Option>Oil Change</Option>
-              <Option>General Mechanic</Option>
+              <Option value="Tire Change with Rims">Tire Change with Rims</Option>
+              <Option value="Tire Change without Rims">Tire Change without Rims</Option>
+              <Option value="Tire Change">Tire Change</Option>
+              <Option value="Oil Change">Oil Change</Option>
+              <Option value="General Mechanic">General Mechanic</Option>
             </Select>
           </div>
           <div className="w-full">
@@ -181,17 +231,16 @@ export function RequestForm() {
             </Typography>
             <Select
               size="lg"
-              labelProps={{
-                className: "hidden",
-              }}
+              value={formData.carType}
+              onChange={handleSelectChange("carType")}          
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
-              <Option>Sedan</Option>
-              <Option>Suv</Option>
-              <Option>Coupe</Option>
-              <Option>Hatchback</Option>
-              <Option>Pickup</Option>
-              <Option>Truck</Option>
+              <Option value="Sedan">Sedan</Option>
+              <Option value="Suv">SUV</Option>
+              <Option value="Coupe">Coupe</Option>
+              <Option value="Hatchback">Hatchback</Option>
+              <Option value="Pickup">Pickup</Option>
+              <Option value="Truck">Truck</Option>
             </Select>
           </div>
           <div className="w-full">
@@ -204,36 +253,27 @@ export function RequestForm() {
             </Typography>
             <Select
               size="lg"
-              labelProps={{
-                className: "hidden",
-              }}
+              value={formData.carYear}
+              onChange={handleSelectChange("carYear")}
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
-             {years.map((year) => (
-          <Option key={year}>{year}</Option>
-        ))}
+              {years.map((year) => (
+                 <Option key={year} value={year}>{year}</Option>
+              ))}
             </Select>
           </div>
         </div>
-        
-    
-   
-      <div className="flex-grow">
-        {/* Form content goes here */}
-      </div>
-      <div className="mb-6 flex justify-center">
-        <Button
-          type="submit"
-          className="border rounded-lg text-white font-extrabold"
-          style={{ borderColor: 'white', backgroundColor: '#A60E0E' }}
-        >
-          Submit
-        </Button>
-      </div>
- 
-        
-      </div>
+
+        <div className="mb-6 flex justify-center">
+          <Button
+            type="submit"
+            className="border rounded-lg text-white font-extrabold"
+            style={{ borderColor: "white", backgroundColor: "#A60E0E" }}
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
     </section>
   );
 }
-
