@@ -7,6 +7,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import logo from "../assets/pneuspeedy-removebg-preview.png";
+import ContactScreen from "../screens/ContactScreen";
 
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -26,7 +27,7 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="ContactScreen" className="flex items-center">
           PRICING
         </a>
       </Typography>

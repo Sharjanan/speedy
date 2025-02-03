@@ -5,12 +5,15 @@ export function Welcome() {
   return (
     
         <Card className="overflow-hidden relative">
+          <div className="relative">
           <img
             alt="nature"
             className="h-[32rem] w-full object-cover object-center"
             //src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2717&q=80"
             src="../assets/tire-change.jpg"
           />
+          <div className="absolute inset-0 bg-black opacity-50"></div> {/* Dark overlay */}
+          </div>
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
             <Typography variant="h2" className="text-4xl font-bold">
               STOP WAITING AT GARAGES!

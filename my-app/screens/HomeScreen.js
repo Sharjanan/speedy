@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Typography, Card } from "@material-tailwind/react";
 import { RequestForm }from"../components/RequestForm"
 import { Welcome }from"../components/Welcome"
+import { NewsLetter3 }from"../components/NewsLetter3"
 const HomeScreen = () => {
   return (
     <div>
@@ -37,6 +38,7 @@ const HomeScreen = () => {
           the next time.
         </Typography>
         <RequestForm />
+        <NewsLetter3 />
       </div>
     </div>
   );

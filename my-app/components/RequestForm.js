@@ -9,6 +9,7 @@ import {
   Popover,
   PopoverHandler,
   PopoverContent,
+  Button,
 } from "@material-tailwind/react";
 
 // day picker
@@ -110,6 +111,42 @@ export function RequestForm() {
           </div>
           
         </div>
+        <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
+        <div className="w-full">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              Postal Code
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="H1H 1H1"
+              labelProps={{
+                className: "hidden",
+              }}
+              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
+            />
+          </div>
+          <div className="w-full">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 font-medium"
+            >
+              City
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="Montreal, QC"
+              labelProps={{
+                className: "hidden",
+              }}
+              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
+            />
+          </div>
+        </div>
         <div className="mb-6 flex flex-col gap-4 md:flex-row">
           
           <div className="w-full">
@@ -127,6 +164,8 @@ export function RequestForm() {
               }}
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
+              <Option>Tire Change with Rims</Option>
+              <Option>Tire Change without Rims</Option>
               <Option>Tire Change</Option>
               <Option>Oil Change</Option>
               <Option>General Mechanic</Option>
@@ -147,9 +186,12 @@ export function RequestForm() {
               }}
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
-              <Option>sedan</Option>
-              <Option>suv</Option>
-              <Option>coupe</Option>
+              <Option>Sedan</Option>
+              <Option>Suv</Option>
+              <Option>Coupe</Option>
+              <Option>Hatchback</Option>
+              <Option>Pickup</Option>
+              <Option>Truck</Option>
             </Select>
           </div>
           <div className="w-full">
@@ -174,26 +216,21 @@ export function RequestForm() {
           </div>
         </div>
         
-        <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
-          <div className="w-full">
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 font-medium"
-            >
-              City
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="Montreal, QC"
-              labelProps={{
-                className: "hidden",
-              }}
-              className="w-full placeholder:opacity-100 focus:border-t-primary border-t-blue-gray-200"
-            />
-          </div>
-         
-        </div>
+    
+   
+      <div className="flex-grow">
+        {/* Form content goes here */}
+      </div>
+      <div className="mb-6 flex justify-center">
+        <Button
+          type="submit"
+          className="border rounded-lg text-white font-extrabold"
+          style={{ borderColor: 'white', backgroundColor: '#A60E0E' }}
+        >
+          Submit
+        </Button>
+      </div>
+ 
         
       </div>
     </section>
