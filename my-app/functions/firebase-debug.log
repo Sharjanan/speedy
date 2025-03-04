@@ -1,0 +1,263 @@
+[debug] [2025-03-04T02:09:18.811Z] ----------------------------------------------------------------------
+[debug] [2025-03-04T02:09:18.813Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\night\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2025-03-04T02:09:18.813Z] CLI Version:   13.31.2
+[debug] [2025-03-04T02:09:18.813Z] Platform:      win32
+[debug] [2025-03-04T02:09:18.813Z] Node Version:  v20.8.0
+[debug] [2025-03-04T02:09:18.813Z] Time:          Mon Mar 03 2025 21:09:18 GMT-0500 (Eastern Standard Time)
+[debug] [2025-03-04T02:09:18.813Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-04T02:09:18.999Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-04T02:09:19.000Z] > authorizing via signed-in user (sharjananstaniculas@gmail.com)
+[debug] [2025-03-04T02:09:19.083Z] java version "17.0.12" 2024-07-16 LTS
+
+[debug] [2025-03-04T02:09:19.084Z] Java(TM) SE Runtime Environment (build 17.0.12+8-LTS-286)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.12+8-LTS-286, mixed mode, sharing)
+
+[debug] [2025-03-04T02:09:19.106Z] Parsed Java major version: 17
+[info] i  emulators: Starting emulators: functions, firestore, hosting, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore, hosting, extensions"}}
+[debug] [2025-03-04T02:09:19.108Z] Checked if tokens are valid: false, expires at: 1741054112587
+[debug] [2025-03-04T02:09:19.108Z] Checked if tokens are valid: false, expires at: 1741054112587
+[debug] [2025-03-04T02:09:19.108Z] > refreshing access token with scopes: []
+[debug] [2025-03-04T02:09:19.109Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-03-04T02:09:19.109Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-03-04T02:09:19.309Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-03-04T02:09:19.309Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-03-04T02:09:19.343Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/speedy-c4155 [none]
+[debug] [2025-03-04T02:09:19.633Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/speedy-c4155 200
+[debug] [2025-03-04T02:09:19.633Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/speedy-c4155 {"projectNumber":"383330076272","projectId":"speedy-c4155","lifecycleState":"ACTIVE","name":"speedy","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-01-15T01:58:02.330695Z"}
+[debug] [2025-03-04T02:09:19.644Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-04T02:09:19.644Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-04T02:09:19.644Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-04T02:09:19.644Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-04T02:09:19.644Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-03-04T02:09:19.649Z] [hub] writing locator at C:\Users\night\AppData\Local\Temp\hub-speedy-c4155.json
+[debug] [2025-03-04T02:09:19.655Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2025-03-04T02:09:19.659Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-04T02:09:19.659Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-04T02:09:19.659Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-03-04T02:09:19.659Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, database, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, database, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-03-04T02:09:19.662Z] defaultcredentials: writing to file C:\Users\night\AppData\Roaming\firebase\sharjananstaniculas_gmail_com_application_default_credentials.json
+[debug] [2025-03-04T02:09:19.664Z] Setting GAC to C:\Users\night\AppData\Roaming\firebase\sharjananstaniculas_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\night\\AppData\\Roaming\\firebase\\sharjananstaniculas_gmail_com_application_default_credentials.json"}}
+[debug] [2025-03-04T02:09:19.664Z] Checked if tokens are valid: true, expires at: 1741057758309
+[debug] [2025-03-04T02:09:19.664Z] Checked if tokens are valid: true, expires at: 1741057758309
+[debug] [2025-03-04T02:09:19.665Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155/adminSdkConfig [none]
+[debug] [2025-03-04T02:09:20.021Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155/adminSdkConfig 200
+[debug] [2025-03-04T02:09:20.021Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155/adminSdkConfig {"projectId":"speedy-c4155","storageBucket":"speedy-c4155.firebasestorage.app"}
+[debug] [2025-03-04T02:09:20.045Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-03-04T02:09:20.045Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2025-03-04T02:09:20.045Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\night\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","speedy-c4155","--rules","C:\\Users\\night\\Documents\\GitHub\\speedy\\my-app\\firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":8080} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\night\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"speedy-c4155\",\"--rules\",\"C:\\\\Users\\\\night\\\\Documents\\\\GitHub\\\\speedy\\\\my-app\\\\firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":8080}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2025-03-04T02:09:20.968Z] Mar. 03, 2025 9:09:20 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9150
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:09:20 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\r\nINFO: Started WebSocket server on ws://127.0.0.1:9150\r\n"}}
+[debug] [2025-03-04T02:09:21.010Z] API endpoint: http://127.0.0.1:8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+
+If you are running a Firestore in Datastore Mode project, run:
+
+   export DATASTORE_EMULATOR_HOST= {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://127.0.0.1:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\r\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080\n\nIf you are running a Firestore in Datastore Mode project, run:\r\n\n   export DATASTORE_EMULATOR_HOST="}}
+[debug] [2025-03-04T02:09:21.010Z] 127.0.0.1:8080
+
+Note: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:8080\n\nNote: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.\r\nDev App Server is now running.\n\r\n"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2025-03-04T02:09:21.096Z] Checked if tokens are valid: true, expires at: 1741057758309
+[debug] [2025-03-04T02:09:21.097Z] Checked if tokens are valid: true, expires at: 1741057758309
+[debug] [2025-03-04T02:09:21.097Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/speedy-c4155/sites 
+[debug] [2025-03-04T02:09:21.860Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/speedy-c4155/sites 200
+[debug] [2025-03-04T02:09:21.860Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/speedy-c4155/sites {"sites":[{"name":"projects/speedy-c4155/sites/speedy-c4155","defaultUrl":"https://speedy-c4155.web.app","appId":"1:383330076272:web:bad2e99bdb91360e2b56b5","type":"DEFAULT_SITE"}]}
+[debug] [2025-03-04T02:09:21.860Z] Checked if tokens are valid: true, expires at: 1741057758309
+[debug] [2025-03-04T02:09:21.860Z] Checked if tokens are valid: true, expires at: 1741057758309
+[debug] [2025-03-04T02:09:21.860Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155/webApps/1:383330076272:web:bad2e99bdb91360e2b56b5/config [none]
+[debug] [2025-03-04T02:09:22.254Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155/webApps/1:383330076272:web:bad2e99bdb91360e2b56b5/config 200
+[debug] [2025-03-04T02:09:22.254Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155/webApps/1:383330076272:web:bad2e99bdb91360e2b56b5/config {"projectId":"speedy-c4155","appId":"1:383330076272:web:bad2e99bdb91360e2b56b5","storageBucket":"speedy-c4155.firebasestorage.app","apiKey":"AIzaSyCWqD0zg_mpIfhZ6_zDcAljpn5-yc0A90k","authDomain":"speedy-c4155.firebaseapp.com","messagingSenderId":"383330076272","measurementId":"G-GTFGN3Q5CS"}
+[debug] [2025-03-04T02:09:22.258Z] Checked if tokens are valid: true, expires at: 1741057758309
+[debug] [2025-03-04T02:09:22.258Z] Checked if tokens are valid: true, expires at: 1741057758309
+[debug] [2025-03-04T02:09:22.258Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155 [none]
+[debug] [2025-03-04T02:09:22.578Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155 200
+[debug] [2025-03-04T02:09:22.578Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/speedy-c4155 {"projectId":"speedy-c4155","projectNumber":"383330076272","displayName":"speedy","name":"projects/speedy-c4155","resources":{"hostingSite":"speedy-c4155"},"state":"ACTIVE","etag":"1_69d5d048-8a6b-4e87-86ac-fcfdff2897f7"}
+[info] i  hosting[speedy-c4155]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting[speedy-c4155]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[debug] [2025-03-04T02:09:22.599Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "C:\Users\night\Documents\GitHub\speedy\my-app\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\night\\Documents\\GitHub\\speedy\\my-app\\functions\" for Cloud Functions..."}}
+[debug] [2025-03-04T02:09:22.606Z] Validating nodejs source
+[debug] [2025-03-04T02:09:23.596Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf lib",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "npm run build && firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@react-email/components": "^0.0.33",
+    "@react-email/html": "^0.0.11",
+    "@react-email/render": "^1.0.5",
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.4.0"
+  },
+  "private": true
+}
+[debug] [2025-03-04T02:09:23.597Z] Building nodejs source
+[debug] [2025-03-04T02:09:23.597Z] Failed to find version of module node: reached end of search path C:\Users\night\Documents\GitHub\speedy\my-app\functions\node_modules
+[warn] !  functions: Your requested "node" version "18" doesn't match your global version "20". Using node@20 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-03-04T02:09:23.600Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-03-04T02:09:23.604Z] Found firebase-functions binary at 'C:\Users\night\Documents\GitHub\speedy\my-app\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8054
+
+[info] ✅ Environment variables loaded successfully!
+
+[debug] [2025-03-04T02:09:24.443Z] Got response from /__/functions.yaml {"endpoints":{"submit":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"submit"},"sendEmail":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"Appointments/{documentId}"},"retry":false},"entryPoint":"sendEmail"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-03-04T02:09:29.482Z] defaultcredentials: writing to file C:\Users\night\AppData\Roaming\firebase\sharjananstaniculas_gmail_com_application_default_credentials.json
+[debug] [2025-03-04T02:09:29.483Z] Setting GAC to C:\Users\night\AppData\Roaming\firebase\sharjananstaniculas_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\night\\AppData\\Roaming\\firebase\\sharjananstaniculas_gmail_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: submit, sendEmail. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: submit, sendEmail."}}
+[info] +  functions[us-central1-submit]: http function initialized (http://127.0.0.1:5001/speedy-c4155/us-central1/submit). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/speedy-c4155/us-central1/submit)."}}
+[debug] [2025-03-04T02:09:29.486Z] Found a v2 firestore trigger.
+[debug] [2025-03-04T02:09:29.486Z] addFirestoreTrigger "{\"eventType\":\"google.cloud.firestore.document.v1.created\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":{\"value\":\"Appointments/{documentId}\",\"matchType\":\"PATH_PATTERN\"}}"
+[debug] [2025-03-04T02:09:29.486Z] >>> [apiv2][query] POST http://127.0.0.1:8080/emulator/v1/projects/speedy-c4155/eventarcTrigger?eventarcTriggerId=us-central1-sendEmail-0 [none]
+[debug] [2025-03-04T02:09:29.487Z] >>> [apiv2][body] POST http://127.0.0.1:8080/emulator/v1/projects/speedy-c4155/eventarcTrigger?eventarcTriggerId=us-central1-sendEmail-0 "{\"eventType\":\"google.cloud.firestore.document.v1.created\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":{\"value\":\"Appointments/{documentId}\",\"matchType\":\"PATH_PATTERN\"}}"
+[debug] [2025-03-04T02:09:29.516Z] Mar. 03, 2025 9:09:29 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:09:29 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-03-04T02:09:29.651Z] Mar. 03, 2025 9:09:29 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:09:29 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected HTTP/2 connection.\r\n"}}
+[debug] [2025-03-04T02:09:30.041Z] <<< [apiv2][status] POST http://127.0.0.1:8080/emulator/v1/projects/speedy-c4155/eventarcTrigger?eventarcTriggerId=us-central1-sendEmail-0 200
+[debug] [2025-03-04T02:09:30.041Z] <<< [apiv2][body] POST http://127.0.0.1:8080/emulator/v1/projects/speedy-c4155/eventarcTrigger?eventarcTriggerId=us-central1-sendEmail-0 {"eventType":"google.cloud.firestore.document.v1.created","database":"(default)","namespace":"(default)","document":{"value":"Appointments/{documentId}","matchType":"PATH_PATTERN"}}
+[info] +  functions[us-central1-sendEmail]: firestore function initialized. {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mfirestore\u001b[22m function initialized."}}
+[debug] [2025-03-04T02:09:30.045Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Firestore  │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Hosting    │ 127.0.0.1:5000 │ n/a                              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+┌─────────────────────────┬───────────────┬─────────────────────┐
+│ Extension Instance Name │ Extension Ref │ View in Emulator UI │
+└─────────────────────────┴───────────────┴─────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-03-04T02:09:41.234Z] Mar. 03, 2025 9:09:41 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:09:41 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\r\nINFO: Connected to new websocket client\r\n"}}
+[debug] [2025-03-04T02:09:41.295Z] Mar. 03, 2025 9:09:41 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:09:41 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\r\nINFO: Connected to new websocket client\r\n"}}
+[debug] [2025-03-04T02:10:00.846Z] Mar. 03, 2025 9:10:00 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:00 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-03-04T02:10:00.873Z] Mar. 03, 2025 9:10:00 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:00 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\r\nINFO: Websocket client disconnected\r\n"}}
+[debug] [2025-03-04T02:10:00.880Z] Mar. 03, 2025 9:10:00 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:00 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\r\nINFO: Connected to new websocket client\r\n"}}
+[debug] [2025-03-04T02:10:02.323Z] Mar. 03, 2025 9:10:02 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:02 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\r\nINFO: Websocket client disconnected\r\n"}}
+[debug] [2025-03-04T02:10:02.902Z] Mar. 03, 2025 9:10:02 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:02 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\r\nINFO: Connected to new websocket client\r\n"}}
+[debug] [2025-03-04T02:10:06.066Z] Mar. 03, 2025 9:10:06 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:06 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\r\nINFO: Websocket client disconnected\r\n"}}
+[debug] [2025-03-04T02:10:06.070Z] Mar. 03, 2025 9:10:06 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:06 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\r\nINFO: Connected to new websocket client\r\n"}}
+[debug] [2025-03-04T02:10:06.150Z] Mar. 03, 2025 9:10:06 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:06 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\r\nINFO: Connected to new websocket client\r\n"}}
+[debug] [2025-03-04T02:10:06.201Z] Mar. 03, 2025 9:10:06 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:06 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-03-04T02:10:06.623Z] Mar. 03, 2025 9:10:06 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:06 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-03-04T02:10:06.716Z] Mar. 03, 2025 9:10:06 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar. 03, 2025 9:10:06 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-03-04T02:10:25.202Z] File C:\Users\night\Documents\GitHub\speedy\my-app\functions\src\index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\night\\Documents\\GitHub\\speedy\\my-app\\functions\\src\\index.ts changed, reloading triggers"}}
+[debug] [2025-03-04T02:10:26.206Z] Validating nodejs source
+[debug] [2025-03-04T02:10:27.390Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf lib",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "npm run build && firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@react-email/components": "^0.0.33",
+    "@react-email/html": "^0.0.11",
+    "@react-email/render": "^1.0.5",
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.4.0"
+  },
+  "private": true
+}
+[debug] [2025-03-04T02:10:27.390Z] Building nodejs source
+[debug] [2025-03-04T02:10:27.390Z] Failed to find version of module node: reached end of search path C:\Users\night\Documents\GitHub\speedy\my-app\functions\node_modules
+[warn] !  functions: Your requested "node" version "18" doesn't match your global version "20". Using node@20 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-03-04T02:10:27.392Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-03-04T02:10:27.396Z] Found firebase-functions binary at 'C:\Users\night\Documents\GitHub\speedy\my-app\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8319
+
+[info] ✅ Environment variables loaded successfully!
+
+[debug] [2025-03-04T02:10:28.097Z] Got response from /__/functions.yaml {"endpoints":{"submit":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"submit"},"sendEmail":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"Appointments/{documentId}"},"retry":false},"entryPoint":"sendEmail"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-03-04T02:10:33.127Z] defaultcredentials: writing to file C:\Users\night\AppData\Roaming\firebase\sharjananstaniculas_gmail_com_application_default_credentials.json
+[debug] [2025-03-04T02:10:33.128Z] Setting GAC to C:\Users\night\AppData\Roaming\firebase\sharjananstaniculas_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\night\\AppData\\Roaming\\firebase\\sharjananstaniculas_gmail_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: submit, sendEmail. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: submit, sendEmail."}}
+[debug] [2025-03-04T02:10:57.391Z] File C:\Users\night\Documents\GitHub\speedy\my-app\functions\package.json changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\night\\Documents\\GitHub\\speedy\\my-app\\functions\\package.json changed, reloading triggers"}}
