@@ -4,6 +4,7 @@
     "target": "es2017",
     "module": "commonjs",
     "lib": ["es2017"],
+    "noEmit": false,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,

@@ -14,13 +14,28 @@ import * as React from "react";
 
 interface KoalaWelcomeEmailProps {
   userFirstname: string;
+  userLastname: string;
+  userEmail: string;
+  userPhone: string;
+  userService: string;
+  userCarType: string;
+  userCarYear: string;
+  userCity: string;
+  userPostalCode: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "";
 
-export const KoalaWelcomeEmail = ({ userFirstname }: KoalaWelcomeEmailProps) => {
+export const KoalaWelcomeEmail = ({
+  userFirstname,
+  userLastname,
+  userEmail,
+  userPhone,
+  userService,
+  userCarType,
+  userCarYear,
+  userCity,
+  userPostalCode,
+}: KoalaWelcomeEmailProps) => {
   return (
     <Html>
       <Head />
@@ -28,15 +43,26 @@ export const KoalaWelcomeEmail = ({ userFirstname }: KoalaWelcomeEmailProps) => 
         <Preview>New Appointment Request</Preview>
         <Container style={container}>
           <Img
-            src={`${baseUrl}/static/koala-logo.png`}
+            src={`../../assets/pneuspeedy-removebg-preview.png`}
             width="170"
             height="50"
             alt="Koala"
             style={logo}
           />
-          <Text style={paragraph}>Hi {userFirstname},</Text>
+          <Text style={paragraph}>Hi Speedy,</Text>
           <Text style={paragraph}>
-            A new appointment has been booked. Please review the details and contact the client.
+            You have received a new appointment request from <strong>{userFirstname} {userLastname}</strong> for <strong>{userService}</strong>.
+            <br />
+            Please review the details and get in touch with the client at your earliest convenience.
+          </Text>
+          <Text style={paragraph}>
+            <strong>📧 Email:</strong> {userEmail}
+            <br />
+            <strong>📞 Phone:</strong> {userPhone}
+            <br />
+            <strong>🚗 Car:</strong> {userCarYear} {userCarType}
+            <br />
+            <strong>📍 Location:</strong> {userCity}, {userPostalCode}
           </Text>
           <Section style={btnContainer}>
             <Button style={button} href="https://your-website.com/appointments">
@@ -49,7 +75,9 @@ export const KoalaWelcomeEmail = ({ userFirstname }: KoalaWelcomeEmailProps) => 
             The Service Team
           </Text>
           <Hr style={hr} />
-          <Text style={footer}>470 Noor Ave STE B #1148, South San Francisco, CA 94080</Text>
+          <Text style={footer}>
+            470 Noor Ave STE B #1148, South San Francisco, CA 94080
+          </Text>
         </Container>
       </Body>
     </Html>

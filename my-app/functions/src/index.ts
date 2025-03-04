@@ -62,7 +62,6 @@ export const sendEmail = onDocumentCreated("/Appointments/{documentId}", async (
   try {
     console.log("📩 Firestore Trigger Activated!");
 
-    // ✅ Retrieve new appointment document
     const docData = event.data?.data();
     if (!docData || !docData.formData) {
       console.warn("⚠️ No appointment data found in Firestore!");
@@ -71,22 +70,35 @@ export const sendEmail = onDocumentCreated("/Appointments/{documentId}", async (
 
     const appointment: AppointmentData = docData.formData;
 
-    // ✅ Extract appointment details
-    const firstName = appointment.firstName || "Unknown";
-    const lastName = appointment.lastName || "Unknown";
+    console.log("✅ Appointment Data:", appointment);
 
-    // ✅ Ensure KoalaWelcomeEmail is treated as a component
-    const emailHtml = await render(React.createElement(KoalaWelcomeEmail, { userFirstname: firstName }));
+    const emailHtml = render(
+      React.createElement(KoalaWelcomeEmail, {
+        userFirstname: appointment.firstName,
+        userLastname: appointment.lastName,
+        userEmail: appointment.email,
+        userPhone: appointment.phone,
+        userService: appointment.serviceNeeded,
+        userCarType: appointment.carType,
+        userCarYear: appointment.carYear,
+        userCity: appointment.city,
+        userPostalCode: appointment.postalCode,
+      })
+    );
+
+    console.log("🚀 Generated Email HTML:", emailHtml);
 
     const msg: sgMail.MailDataRequired = {
       to: MECHANIC_EMAIL,
       from: SENDGRID_SENDER,
       subject: "New Appointment Request",
-      html: String(emailHtml), // ✅ Ensures html is a string
+      html: String(emailHtml),
     };
 
+    console.log("📤 Sending email...");
     await sgMail.send(msg);
     console.log("📩 Email sent successfully!");
+
   } catch (error: unknown) {
     console.error("⚠️ Error sending email:", error);
     if (error instanceof Error) {
