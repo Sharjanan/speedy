@@ -1,5 +1,5 @@
 import { Typography } from "@material-tailwind/react";
-
+import logo from "../assets/pneuspeedy-removebg-preview.png";
 const contactDetails = {
   phone: "(438) 299 7771",
   email: "support@speedy.ca",
@@ -12,73 +12,58 @@ const links = [
 ];
 
 const currentYear = new Date().getFullYear();
-
 export function Footer() {
   return (
-    <footer className="bg-gray-900 px-8 py-16">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-start gap-12">
-          {/* Contact Info */}
-          <div className="text-gray-500 md:w-1/2">
-            <h3 className="text-white font-semibold text-lg mb-6">Contact Us</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 hover:text-gray-300 transition-colors">
-                <span className="w-5">📞</span>
-                <Typography as="a" href={`tel:${contactDetails.phone}`} className="!text-gray-500 hover:!text-gray-300">
-                  {contactDetails.phone}
-                </Typography>
-              </div>
-              <div className="flex items-center gap-3 hover:text-gray-300 transition-colors">
-                <span className="w-5">✉️</span>
-                <Typography as="a" href={`mailto:${contactDetails.email}`} className="!text-gray-500 hover:!text-gray-300">
-                  {contactDetails.email}
-                </Typography>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-5">📍</span>
-                <Typography as="a" 
-                  href={`https://maps.google.com/?q=${encodeURIComponent(contactDetails.address)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="!text-gray-500 hover:!text-gray-300">
-                  {contactDetails.address}
-                </Typography>
-              </div>
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="grid grid-cols-2 gap-8 md:w-1/2">
-            {links.map((column, columnIndex) => (
-              <div key={columnIndex} className="flex flex-col gap-4">
-                <h3 className="text-white font-semibold text-lg mb-2">
-                  {columnIndex === 0 ? "Navigation" : "Resources"}
-                </h3>
-                {column.map((link, index) => (
-                  <Typography
-                    key={index}
-                    as="a"
-                    href="#"
-                    className="font-medium !text-gray-500 transition-colors hover:!text-gray-300 hover:translate-x-1 transform duration-200"
-                  >
-                    {link}
-                  </Typography>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-800/50">
-          <Typography
-            color="blue-gray"
-            className="!text-sm !font-normal text-gray-500 text-center"
-          >
-            Copyright &copy; {currentYear} Speedy. All rights reserved.
-          </Typography>
-        </div>
+    <footer className="w-full bg-white p-8">
+      <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
+        <img src= "../assets/pneuspeedy-removebg-preview.png" alt="logo-ct" className="w-100" />
+        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+          <li>
+            <Typography
+              as="a"
+              href="#"
+              color="blue-gray"
+              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+            >
+              About Us
+            </Typography>
+          </li>
+          <li>
+            <Typography
+              as="a"
+              href="#"
+              color="blue-gray"
+              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+            >
+              License
+            </Typography>
+          </li>
+          <li>
+            <Typography
+              as="a"
+              href="#"
+              color="blue-gray"
+              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+            >
+              Contribute
+            </Typography>
+          </li>
+          <li>
+            <Typography
+              as="a"
+              href="#"
+              color="blue-gray"
+              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+            >
+              Contact Us
+            </Typography>
+          </li>
+        </ul>
       </div>
+      <hr className="my-8 border-blue-gray-50" />
+      <Typography color="blue-gray" className="text-center font-normal">
+        &copy; 2023 Material Tailwind
+      </Typography>
     </footer>
   );
 }
