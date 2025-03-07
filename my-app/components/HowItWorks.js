@@ -4,7 +4,7 @@ import { FaHandPointer } from "react-icons/fa"; // Click Icon
 
 const welcome = "../assets/tire-change.jpg";
 const range = "../assets/rangerover2.jpg";
-const incomingCall = "../assets/incomingCall.jpg";
+const incomingCall = "../assets/incomingCall1.jpg";
 
 const HowItWorks = ({ onRequestCallback }) => {
   const steps = [

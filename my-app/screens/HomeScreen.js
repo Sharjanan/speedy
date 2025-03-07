@@ -3,8 +3,9 @@ import { Typography } from "@material-tailwind/react";
 import { RequestForm } from "../components/RequestForm";
 import { Welcome } from "../components/Welcome";
 import { NewsLetter3 } from "../components/NewsLetter3";
-import PromoVideo from "../components/PromoVideo"; 
+import PromoVideo from "../components/PromoVideo";
 import HowItWorks from "../components/HowItWorks";
+import { BookNow } from "../components/BookNow";
 const HomeScreen = () => {
   // Create a reference for the RequestForm section
   const requestFormRef = useRef(null);
@@ -27,15 +28,16 @@ const HomeScreen = () => {
       </div>
 
       <div className="mx-auto max-w-screen-md">
-      
+
         {/* Wrap RequestForm in a div and attach ref */}
         <div ref={requestFormRef}>
           <RequestForm />
         </div>
-
-        <NewsLetter3 />
-        <PromoVideo />
       </div>
+      <NewsLetter3 />
+      <BookNow onRequestCallback={scrollToRequestForm}/>
+      <PromoVideo />
+
     </div>
   );
 };
