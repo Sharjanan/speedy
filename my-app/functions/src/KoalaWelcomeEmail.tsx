@@ -24,7 +24,6 @@ interface KoalaWelcomeEmailProps {
   userPostalCode: string;
 }
 
-
 export const KoalaWelcomeEmail = ({
   userFirstname,
   userLastname,
@@ -51,18 +50,37 @@ export const KoalaWelcomeEmail = ({
           />
           <Text style={paragraph}>Hi Speedy,</Text>
           <Text style={paragraph}>
-            You have received a new appointment request from <strong>{userFirstname} {userLastname}</strong> for <strong>{userService}</strong>.
+            You have received a new appointment request from{" "}
+            <strong>
+              {userFirstname} {userLastname}
+            </strong>{" "}
+            for <strong>{userService}</strong>.
             <br />
-            Please review the details and get in touch with the client at your earliest convenience.
+            Please review the details and get in touch with the client at your
+            earliest convenience.
           </Text>
           <Text style={paragraph}>
             <strong>📧 Email:</strong> {userEmail}
             <br />
-            <strong>📞 Phone:</strong> {userPhone}
+            <strong>📞 Phone:</strong>
+            <a
+              href={`tel:${userPhone}`}
+              style={{ color: "#5F51E8", textDecoration: "none" }}
+            >
+              {userPhone}
+            </a>
             <br />
             <strong>🚗 Car:</strong> {userCarYear} {userCarType}
             <br />
-            <strong>📍 Location:</strong> {userCity}, {userPostalCode}
+            <strong>📍 Location:</strong>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(userCity + " " + userPostalCode)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#5F51E8", textDecoration: "none" }}
+            >
+              {userCity}, {userPostalCode}
+            </a>
           </Text>
           <Section style={btnContainer}>
             <Button style={button} href="https://your-website.com/appointments">

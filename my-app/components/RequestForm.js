@@ -62,7 +62,8 @@ export function RequestForm() {
       // Save the appointment request to Firestore
       const docRef = await addDoc(collection(db, "AppointmentRequest"), formData);
       console.log("✅ Document saved with ID:", docRef.id);
-      const response = await fetch("http://localhost:5001/speedy-c4155/us-central1/submit", {
+      console.log("📤 Sending data to backend:", JSON.stringify(formData, null, 2));
+      const response = await fetch("https://us-central1-speedy-c4155.cloudfunctions.net/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

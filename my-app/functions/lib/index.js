@@ -46,8 +46,11 @@ const React = __importStar(require("react"));
 const KoalaWelcomeEmail_1 = __importDefault(require("./KoalaWelcomeEmail"));
 const app_1 = require("firebase-admin/app");
 const firestore_2 = require("firebase-admin/firestore");
+const cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 (0, app_1.initializeApp)();
+const corsHandler = (0, cors_1.default)({ origin: true });
+const db = (0, firestore_2.getFirestore)();
 const getEnv = (key) => {
     const value = process.env[key];
     if (!value) {
@@ -59,64 +62,78 @@ const getEnv = (key) => {
 const SENDGRID_API_KEY = getEnv("SENDGRID_API_KEY");
 const MECHANIC_EMAIL = getEnv("MECHANIC_EMAIL");
 const SENDGRID_SENDER = getEnv("SENDGRID_SENDER");
+// const getConfig = async (key: string): Promise<string> => {
+//   try {
+//     const docRef = db.collection("Config").doc("SendGrid"); 
+//     const doc = await docRef.get();
+//     if (!doc.exists) {
+//       throw new Error("❌ Configuration document does not exist in Firestore.");
+//     }
+//     const data = doc.data();
+//     if (!data || !data[key]) {
+//       throw new Error(`❌ Missing configuration key in Firestore: ${key}`);
+//     }
+//     return data[key];
+//   } catch (error) {
+//     console.error("⚠️ Error fetching config:", error);
+//     throw error;
+//   }
+// };
+// const SENDGRID_API_KEY = config().sendgrid.api_key;
+// const MECHANIC_EMAIL = config().sendgrid.mechanic_email; 
+// const SENDGRID_SENDER = config().sendgrid.sender_email;
 // ✅ Set API Key
 mail_1.default.setApiKey(SENDGRID_API_KEY);
 console.log("✅ Environment variables loaded successfully!");
 // ✅ Submit function (store appointment in Firestore)
 exports.submit = (0, https_1.onRequest)(async (req, res) => {
-    try {
-        const formData = req.body;
-        const writeResult = await (0, firestore_2.getFirestore)()
-            .collection("Appointments")
-            .add({ formData });
-        res.json({ result: `Appointment with ID: ${writeResult.id} stored.` });
-    }
-    catch (error) {
-        console.error("❌ Error storing request:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
+    return corsHandler(req, res, async () => {
+        try {
+            console.log("📥 Received Request Body:", req.body);
+            const formData = req.body;
+            const writeResult = await db
+                .collection("Appointments")
+                .add({ formData });
+            res.json({ result: `Appointment with ID: ${writeResult.id} stored.` });
+        }
+        catch (error) {
+            console.error("❌ Error storing request:", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
+    });
 });
 // ✅ Firestore Trigger Function to Send Email on New Appointment
 exports.sendEmail = (0, firestore_1.onDocumentCreated)("/Appointments/{documentId}", async (event) => {
     var _a;
     try {
         console.log("📩 Firestore Trigger Activated!");
-        // ✅ Retrieve new appointment document
         const docData = (_a = event.data) === null || _a === void 0 ? void 0 : _a.data();
         if (!docData || !docData.formData) {
             console.warn("⚠️ No appointment data found in Firestore!");
             return;
         }
         const appointment = docData.formData;
-        // ✅ Extract appointment details
-        const firstName = appointment.firstName || "Unknown";
-        const lastName = appointment.lastName || "Unknown";
-        const email = appointment.email || "No email provided";
-        const phone = appointment.phone || "No phone provided";
-        const serviceNeeded = appointment.serviceNeeded || "Unknown Service";
-        const carType = appointment.carType || "Unknown";
-        const carYear = appointment.carYear || "N/A";
-        const city = appointment.city || "Unknown";
-        const postalCode = appointment.postalCode || "N/A";
-        // ✅ Ensure KoalaWelcomeEmail is treated as a component
-        // ✅ Render the email with all details
+        console.log("✅ Appointment Data:", appointment);
+        // 🔥 Await the render() function to ensure it resolves before being used
         const emailHtml = await (0, render_1.render)(React.createElement(KoalaWelcomeEmail_1.default, {
-            userFirstname: firstName,
-            userLastname: lastName,
-            userEmail: email,
-            userPhone: phone,
-            userService: serviceNeeded,
-            userCarType: carType,
-            userCarYear: carYear,
-            userCity: city,
-            userPostalCode: postalCode
+            userFirstname: appointment.firstName,
+            userLastname: appointment.lastName,
+            userEmail: appointment.email,
+            userPhone: appointment.phone,
+            userService: appointment.serviceNeeded,
+            userCarType: appointment.carType,
+            userCarYear: appointment.carYear,
+            userCity: appointment.city,
+            userPostalCode: appointment.postalCode,
         }));
+        console.log("🚀 Generated Email HTML:", emailHtml);
         const msg = {
             to: MECHANIC_EMAIL,
             from: SENDGRID_SENDER,
             subject: "New Appointment Request",
-            html: String(emailHtml), // ✅ Ensures html is a string
+            html: emailHtml, // ✅ No more [object Promise]
         };
+        console.log("📤 Sending email...");
         await mail_1.default.send(msg);
         console.log("📩 Email sent successfully!");
     }
