@@ -12,7 +12,7 @@ import {
   Button,
   Spinner,
 } from "@material-tailwind/react";
-
+//import {Confirmation} from "./Confirmation";
 export function RequestForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -59,9 +59,23 @@ export function RequestForm() {
 
     setIsSubmitting(true);
     try {
-      // Using the correct collection name from Firestore
-      await addDoc(collection(db, "AppointmentRequest"), formData);
-      alert("Request submitted successfully!");
+      // Save the appointment request to Firestore
+      const docRef = await addDoc(collection(db, "AppointmentRequest"), formData);
+      console.log("✅ Document saved with ID:", docRef.id);
+      console.log("📤 Sending data to backend:", JSON.stringify(formData, null, 2));
+      const response = await fetch("https://us-central1-speedy-c4155.cloudfunctions.net/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log(result);
+
+        
+    if (response.ok) {
+      alert("✅ Request submitted successfully!");
       setFormData({
         firstName: "",
         lastName: "",
@@ -72,16 +86,17 @@ export function RequestForm() {
         carYear: "",
         city: "",
         postalCode: "",
-       
       });
-    } catch (error) {
-      console.error("Error adding document: ", error);
-      alert(`Failed to submit request: ${error.message}`);
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      alert("❌ Failed to submit request.");
     }
-  };
-
+    } catch (error) {
+        console.error("Error:", error);
+        alert(`Failed to submit request: ${error.message}`);
+    } finally {
+        setIsSubmitting(false);
+    }
+};
   return (
     <section className="px-8 py-20 container mx-auto">
       <Typography variant="h5" color="blue-gray">
@@ -275,4 +290,4 @@ export function RequestForm() {
       </form>
     </section>
   );
-}
+ }
