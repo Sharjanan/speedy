@@ -1,17 +1,23 @@
 import React from "react";
 import { Button, Typography, Card } from "@material-tailwind/react";
 import tireImage from "../assets/tire-change.jpg";
+import promoVideo from "../assets/promovideo.mp4";
 
 export function Welcome({ onRequestCallback }) {
   return (
     <Card className="overflow-hidden relative">
       <div className="relative">
-        <img
-          alt="tire change service"
+      <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="h-[32rem] w-full object-cover object-center"
-          src="../assets/tire-change.jpg"
-        />
-        <div className="absolute inset-0 bg-black opacity-50"></div> {/* Dark overlay */}
+        >
+          <source src="../assets/promovideo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black opacity-60"></div> {/* Dark overlay */}
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
         <Typography variant="h2" className="text-4xl font-bold">
@@ -28,7 +34,8 @@ export function Welcome({ onRequestCallback }) {
             fullWidth
             variant="text"
             size="sm"
-            className="border border-white text-white rounded-lg font-extrabold mt-4"
+            className="border border-white text-white rounded-lg font-extrabold  hover:bg-white hover:text-black mt-4"
+            onClick={onRequestCallback}
           >
             <span>BOOK APPOINTMENT</span>
           </Button>
@@ -36,8 +43,7 @@ export function Welcome({ onRequestCallback }) {
             fullWidth
             variant="text"
             size="sm"
-            className="border rounded-lg text-white font-extrabold mt-4"
-            style={{ borderColor: "white", backgroundColor: "#A60E0E" }}
+            className="border  border-white rounded-lg text-white font-extrabold  bg-[#A60E0E]  hover:bg-white hover:text-black mt-4"
             onClick={onRequestCallback} // Scrolls to the form when clicked
           >
             REQUEST A CALL BACK
