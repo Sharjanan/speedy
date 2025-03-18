@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Card } from "@material-tailwind/react";
 
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+const PLACE_ID = process.env.REACT_APP_PLACE_ID;
 
 
 export function GoogleReview() {
