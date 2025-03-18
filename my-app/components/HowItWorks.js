@@ -4,7 +4,7 @@ import { FaHandPointer } from "react-icons/fa"; // Click Icon
 
 const welcome = "../assets/tire-change.jpg";
 const range = "../assets/rangerover2.jpg";
-const incomingCall = "../assets/incomingCall1.jpg";
+const incomingCall = "../assets/incoming2.gif";
 
 const HowItWorks = ({ onRequestCallback }) => {
   const steps = [
@@ -41,7 +41,7 @@ const HowItWorks = ({ onRequestCallback }) => {
 
   return (
     
-    <div className="relative flex flex-col items-center bg-cover bg-center py-12 px-4 sm:px-8">
+    <div className="relative flex flex-col items-center bg-cover bg-center py-12 px-4 sm:px-8 w-full">
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black"></div>
 
@@ -52,17 +52,17 @@ const HowItWorks = ({ onRequestCallback }) => {
         </Typography>
 
         {/* Step Cards - Styled like iPhones */}
-        <div className="flex flex-col md:flex-row gap-16 justify-center">
+        <div className="flex flex-wrap  md:flex-row gap-16 justify-center w-full">
           {steps.map((step, index) => (
             <div key={index} className="flex flex-col items-center">
               {/* Step Number (Above the Card) */}
-              <div className="text-5xl font-extrabold text-red-400 mb-2">
+              <div className="text-5xl font-extrabold text-400 mb-2 "  style={{ color: "#A60E0E" }}>
                 {step.number}
               </div>
 
               {/* iPhone-style Card */}
               <Card
-                className="relative w-72 h-[36rem] flex flex-col items-center justify-center border border-white/20 shadow-xl 
+                className="relative w-72 h-[36rem] flex flex-col items-center justify-center border-4 border-white shadow-xl 
                           backdrop-blur-md rounded-[2.5rem] overflow-hidden text-white p-6"
                 style={{
                   background: step.bgImage
@@ -71,7 +71,7 @@ const HowItWorks = ({ onRequestCallback }) => {
                 }}
               >
                 {/* iPhone Notch */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black/70 rounded-b-full"></div>
+                <div className="absolute top-5 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-full"></div>
 
                 {/* Add Button Only for Step 1 Inside the iPhone */}
                 {index === 0 && step.button && <div className="absolute bottom-12">{step.button}</div>}
