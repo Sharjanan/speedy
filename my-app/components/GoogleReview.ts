@@ -1,23 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Card } from "@material-tailwind/react";
+import cors from "cors";
 
-const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-const PLACE_ID = process.env.REACT_APP_PLACE_ID;
+dotenv.config();
+const corsHandler = cors({ origin: true });
 
+const GOOGLE_API_KEY: string = process.env.GOOGLE_API_KEY;
+const PLACE_ID: string = process.env.PLACE_ID;
 
 export function GoogleReview() {
   const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    console.log("GOOGLE_API_KEY:", GOOGLE_API_KEY);
+    console.log("PLACE_ID:", PLACE_ID);
+  }, []);
+  
+  
 
   useEffect(() => {
     const fetchGoogleReviews = async () => {
       try {
         const response = await fetch(
-          `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews,rating,user_ratings_total&key=${GOOGLE_API_KEY}`
+          `https://places.googleapis.com/v1/places/ChIJhefYU7https://places.googleapis.com/v1/places/ChIJhefYU7YeyUwR1SV5kwUCAE0?fields=id,displayName,rating,userRatingCount,websiteUri,reviews&key=AIzaSyBnpDw8PX6uMBx7OXuWzrrQtTrDOrAoxXgYeyUwR1SV5kwUCAE0?fields=id,displayName,rating,userRatingCount,websiteUri,reviews&key=AIzaSyBnpDw8PX6uMBx7OXuWzrrQtTrDOrAoxXg`
         );
         const data = await response.json();
+        console.log("Google Reviews API Response:", data); // Debugging
 
         if (data.result && data.result.reviews) {
-          setReviews(data.result.reviews.slice(0, 3)); // Fetch top 3 reviews
+          setReviews(data.result.reviews.filter((r) => r.rating === 5).slice(0, 3)); // ✅ Get only 5-star reviews
         }
       } catch (error) {
         console.error("⚠️ Error fetching Google Reviews:", error);
