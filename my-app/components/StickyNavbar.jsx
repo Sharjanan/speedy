@@ -4,6 +4,7 @@ import logo from "../assets/pneuspeedy-removebg-preview.png";
 import { db } from "../firebaseConfig"; // Import Firestore instance
 import { doc, getDoc } from "firebase/firestore";
 import LanguageDropdown from "./LanguageDropdown";
+import { motion } from "framer-motion";
 
 
 export function StickyNavbar() {
@@ -71,6 +72,7 @@ const fetchPhoneNumber = async () => {
   );
 
   return (
+    
     <Navbar className="sticky top-0 z-10 h-24 max-w-full rounded-none px-8 py-0 shadow-md">
       <div className="flex items-center justify-between text-blue-gray-900">
         
