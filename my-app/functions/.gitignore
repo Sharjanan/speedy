@@ -5,3 +5,7 @@ node_modules/
 # local env files
 .env*.local
 .env
+
+
+# Firebase debug logs
+firebase-debug.log*

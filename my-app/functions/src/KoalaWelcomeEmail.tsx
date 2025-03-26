@@ -12,6 +12,8 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
+
+
 interface KoalaWelcomeEmailProps {
   userFirstname: string;
   userLastname: string;
@@ -39,13 +41,11 @@ export const KoalaWelcomeEmail = ({
     <Html>
       <Head />
       <Body style={main}>
-        <Preview>New Appointment Request</Preview>
+        <Preview>New Appointment from  {userFirstname} {userLastname}</Preview>
         <Container style={container}>
           <Img
-            src={`../../assets/pneuspeedy-removebg-preview.png`}
-            width="170"
-            height="50"
-            alt="Koala"
+            src="https://raw.githubusercontent.com/Sharjanan/speedy/forms/my-app/assets/pneuspeedy.png"
+            alt="logo"
             style={logo}
           />
           <Text style={paragraph}>Hi Speedy,</Text>
@@ -93,9 +93,7 @@ export const KoalaWelcomeEmail = ({
             The Service Team
           </Text>
           <Hr style={hr} />
-          <Text style={footer}>
-            470 Noor Ave STE B #1148, South San Francisco, CA 94080
-          </Text>
+          
         </Container>
       </Body>
     </Html>
