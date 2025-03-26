@@ -3,13 +3,13 @@ import { Button, Typography, Navbar } from "@material-tailwind/react";
 import logo from "../assets/pneuspeedy-removebg-preview.png";
 import { db } from "../firebaseConfig"; // Import Firestore instance
 import { doc, getDoc } from "firebase/firestore";
-
+import LanguageDropdown from "./LanguageDropdown";
 
 
 export function StickyNavbar() {
   const [openNav, setOpenNav] = useState(false);
   const [mechanicPhone, setMechanicPhone] = useState("");
-
+  const [language, setLanguage] = useState("English");
 const fetchPhoneNumber = async () => {
     try {
       const docRef = doc(db, "Config", "Twilio"); // Reference to Twilio document
@@ -82,7 +82,12 @@ const fetchPhoneNumber = async () => {
         {/* Desktop Nav & Contact */}
         <div className="hidden lg:flex items-center gap-8 mt-[-70px]">
           {navList}
-          <Button variant="text" size="sm">FR</Button>
+
+
+          <LanguageDropdown language={language} setLanguage={setLanguage} />
+
+
+          
           <Button variant="gradient" size="sm" className="bg-red-600 text-white"   onClick={() => window.location.href =  `tel:${mechanicPhone}`}>
              {mechanicPhone ? formatPhoneNumber(mechanicPhone) : "Loading..."}
           </Button>
@@ -107,8 +112,8 @@ const fetchPhoneNumber = async () => {
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52 absolute right-0 z-50">
                 {navList}
                 <div className="flex flex-col items-center gap-2">
-                  <Button variant="text" size="sm">FR</Button>
-                  <Button variant="gradient" size="sm" className="bg-[#A60E0E]  hover:bg-white hover:text-black text-white " onClick={() => window.location.href =  `tel:${mechanicPhone}`}>
+                <LanguageDropdown language={language} setLanguage={setLanguage} />
+                <Button variant="gradient" size="sm" className="bg-[#A60E0E]  hover:bg-white hover:text-black text-white " onClick={() => window.location.href =  `tel:${mechanicPhone}`}>
                   {mechanicPhone ? formatPhoneNumber(mechanicPhone) : "Loading..."}
                   </Button>
                 </div>
