@@ -5,7 +5,7 @@ import promoVideo from "../assets/promovideo.mp4";
 
 export function Welcome({ onRequestCallback }) {
   return (
-    <Card className="overflow-hidden relative">
+    <Card className="overflow-hidden relative rounded-none">
       <div className="relative">
       <video
           autoPlay

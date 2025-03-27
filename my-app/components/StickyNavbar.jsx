@@ -138,7 +138,7 @@ export function StickyNavbar() {
               {/* Dropdown Content */}
               {openNav && (
                 <div
-                  className={`fixed top-0 right-0 w-72 mr-4 h-screen bg-white shadow-lg z-[9999] p-4 overflow-y-auto`}
+                  className={`fixed -top-1 -right-5  mr-4 h-[105vh] bg-white shadow-lg z-[9999] p-4 overflow-hidden`}
                 >
                   <div className="mb-6 flex items-center justify-between">
                     <div>
