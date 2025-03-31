@@ -137,19 +137,12 @@ export function StickyNavbar() {
             >
               {/* Dropdown Content */}
               {openNav && (
+                
                 <div
                   className={`fixed -top-1 -right-5  mr-4 h-[105vh] bg-white shadow-lg z-[9999] p-4 overflow-hidden`}
                 >
-                  <div className="mb-6 flex items-center justify-between">
-                    <div>
-                      <img
-                        alt="Logo"
-                        className="lg:ml-4 cursor-pointer mt-[-70px]"
-                        src="../assets/pneuspeedy-removebg-preview.png"
-                      />
-                    </div>
-
-                    <IconButton
+                  <div className="flex justify-end mt-5 mr-6">
+                   <IconButton
                       variant="text"
                       color="blue-gray"
                       onClick={closeDrawer}
@@ -160,7 +153,7 @@ export function StickyNavbar() {
                         viewBox="0 0 24 24"
                         strokeWidth={2}
                         stroke="currentColor"
-                        className="h-5 w-5"
+                        className="h-6 w-6"
                       >
                         <path
                           strokeLinecap="round"
@@ -170,13 +163,23 @@ export function StickyNavbar() {
                       </svg>
                     </IconButton>
                   </div>
+                  <div className=" flex justify-center">
+                    <div>
+                      <img
+                        alt="Logo"
+                        className="lg:ml-4 cursor-pointer"
+                        src="../assets/pneuspeedy-removebg-preview.png"
+                      />
+                    </div>
 
-                  <ul tabIndex={0} className="items-center flex flex-col ">
+                   
+                  </div>
+
+                  <ul tabIndex={0} className="items-start flex flex-col ">
                     {navList}
-                    <div className="flex flex-col items-center gap-2"></div>
                   </ul>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-3">
                     <Button size="sm" variant="outlined">
                       <LanguageDropdown
                         language={language}
