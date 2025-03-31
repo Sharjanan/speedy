@@ -129,12 +129,7 @@ export function StickyNavbar() {
 
         <div className="lg:hidden flex items-center mt-[-70px]">
           <React.Fragment>
-            <Drawer
-              open={openNav}
-              onClose={closeDrawer}
-              placement="right"
-              className="p-4 bg-transparent z-[9999]"
-            >
+        
               {/* Dropdown Content */}
               {openNav && (
                 
@@ -179,7 +174,7 @@ export function StickyNavbar() {
                     {navList}
                   </ul>
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 m-4">
                     <Button size="sm" variant="outlined">
                       <LanguageDropdown
                         language={language}
@@ -190,7 +185,7 @@ export function StickyNavbar() {
                   </div>
                 </div>
               )}
-            </Drawer>
+          
           </React.Fragment>
 
           <div className="dropdown">
