@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import logo from "../assets/pneuspeedy-removebg-preview.png";
 import ContactScreen from "../screens/ContactScreen";
-
+import { Link } from 'expo-router';
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
  
