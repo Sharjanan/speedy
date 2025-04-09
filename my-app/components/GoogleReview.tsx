@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Rating, Typography, Card } from "@material-tailwind/react";
-
+import { motion, useScroll, useTransform } from "framer-motion";
 interface GoogleReview {
   rating: number;
   userRatingCount: number;
@@ -29,7 +29,9 @@ export function GoogleReview() {
   const [rated, setRated] = useState(5);
   const [userRatingCount, setUserRatingCount] = useState<number | null>(null);
   const scrollRef = React.useRef<HTMLDivElement>(null);
-
+  const { scrollY } = useScroll();
+  const scale = useTransform(scrollY, [0, 300], [1, 1.3]); // adjust range as needed
+  
   useEffect(() => {
     if (!GOOGLE_API_KEY || !PLACE_ID) {
       console.error("❌ Missing Google API Key or Place ID!");
@@ -103,24 +105,31 @@ export function GoogleReview() {
     <section className="py-12 bg-gray-50 sm:py-16 lg:py-20">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
-          <Typography
-            variant="h6"
-            className="text-lg font-medium text-gray-600"
-            placeholder="" // Dummy value to satisfy TS
-            onPointerEnterCapture={() => {}}
-            onPointerLeaveCapture={() => {}}
-          >
-            Real Customer Reviews from Google
-          </Typography>
+        <motion.div 
+          initial={{ scale: 0.9, opacity: 0 }}
+  whileInView={{ scale: 1.2, opacity: 1 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true, amount: 0.5 }} 
+        >
           <Typography
             variant="h2"
-            className="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl"
+            className="mt-4 text-3xl font-bold text-gray-900 sm:text-5xl xl:text-5xl"
             placeholder="" // Dummy value to satisfy TS
             onPointerEnterCapture={() => {}}
             onPointerLeaveCapture={() => {}}
           >
-            What Our Clients Say
+            Happy Cutomers
           </Typography>
+          </motion.div>
+          <div className="max-w ">
+          <Rating
+            value={5}
+           readonly
+            placeholder=""
+            onPointerEnterCapture={() => {}}
+            onPointerLeaveCapture={() => {}}
+          />
+          </div>
         </div>
 
         <div className="relative mt-10 md:mt-24">
