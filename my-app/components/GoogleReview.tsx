@@ -205,7 +205,7 @@ export function GoogleReview() {
         <div className="mt-8 text-center md:mt-16">
           <Rating
             value={5}
-            onChange={(value) => setRated(value)}
+           readonly
             placeholder=""
             onPointerEnterCapture={() => {}}
             onPointerLeaveCapture={() => {}}
