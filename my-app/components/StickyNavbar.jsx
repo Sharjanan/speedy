@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Button, Typography, Navbar } from "@material-tailwind/react";
+import {
+  Button,
+  Typography,
+  Navbar,
+  MobileNav,
+  IconButton,
+} from "@material-tailwind/react";
 import logo from "../assets/pneuspeedy-removebg-preview.png";
 import { db } from "../firebaseConfig"; // Import Firestore instance
 import { doc, getDoc } from "firebase/firestore";
 import LanguageDropdown from "./LanguageDropdown";
 import { motion } from "framer-motion";
-import { Drawer, IconButton } from "@material-tailwind/react";
+import { Link } from "expo-router";
+
 export function StickyNavbar() {
   const [openNav, setOpenNav] = useState(false);
   const openDrawer = () => setOpenNav(true);
@@ -66,26 +73,29 @@ export function StickyNavbar() {
   }, [openNav]);
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-extrabold"
-      >
-        <a href="#" className="flex items-center">
+      <Link href="/" className="flex items-center">
+        {" "}
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-extrabold"
+        >
           PRICING
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-extrabold"
-      >
-        <a href="#" className="flex items-center">
+        </Typography>{" "}
+      </Link>
+
+      <Link href="/contact" className="flex items-center">
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-extrabold"
+        >
           CONTACT
-        </a>
-      </Typography>
+        </Typography>{" "}
+      </Link>
+
       <Typography
         as="li"
         variant="small"
@@ -102,13 +112,14 @@ export function StickyNavbar() {
   return (
     <Navbar className="sticky top-0 z-10 h-24 max-w-full rounded-none px-8 py-0 shadow-md">
       <div className="flex items-center justify-between text-blue-gray-900">
-        {/* LOGO */}
         <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
-          <img
-            alt="Logo"
-            className="lg:ml-4 cursor-pointer mt-[-70px]"
-            src="../assets/pneuspeedy-removebg-preview.png"
-          />
+          <Link href="/">
+            <img
+              alt="Logo"
+              className="lg:ml-4 cursor-pointer mt-[-70px]"
+              src="../assets/pneuspeedy-removebg-preview.png"
+            />
+          </Link>
         </div>
 
         {/* Desktop Nav & Contact */}
@@ -129,63 +140,58 @@ export function StickyNavbar() {
 
         <div className="lg:hidden flex items-center mt-[-70px]">
           <React.Fragment>
-        
-              {/* Dropdown Content */}
-              {openNav && (
-                
-                <div
-                  className={`fixed -top-1 -right-5  mr-4 h-[105vh] bg-white shadow-lg z-[9999] p-4 overflow-hidden`}
-                >
-                  <div className="flex justify-end mt-5 mr-6">
-                   <IconButton
-                      variant="text"
-                      color="blue-gray"
-                      onClick={closeDrawer}
+            {/* Dropdown Content */}
+            {openNav && (
+              <div
+                className={`fixed -top-1 -right-5  mr-4 h-[105vh] bg-white shadow-lg z-[9999] p-4 overflow-hidden`}
+              >
+                <div className="flex justify-end mt-5 mr-6">
+                  <IconButton
+                    variant="text"
+                    color="blue-gray"
+                    onClick={closeDrawer}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="h-6 w-6"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2}
-                        stroke="currentColor"
-                        className="h-6 w-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </IconButton>
-                  </div>
-                  <div className=" flex justify-center">
-                    <div>
-                      <img
-                        alt="Logo"
-                        className="lg:ml-4 cursor-pointer"
-                        src="../assets/pneuspeedy-removebg-preview.png"
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
                       />
-                    </div>
-
-                   
-                  </div>
-
-                  <ul tabIndex={0} className="items-start flex flex-col ">
-                    {navList}
-                  </ul>
-
-                  <div className="flex gap-3 m-4">
-                    <Button size="sm" variant="outlined">
-                      <LanguageDropdown
-                        language={language}
-                        setLanguage={setLanguage}
-                      />
-                    </Button>
-                    <Button size="sm">Get Started</Button>
+                    </svg>
+                  </IconButton>
+                </div>
+                <div className=" flex justify-center">
+                  <div>
+                    <img
+                      alt="Logo"
+                      className="lg:ml-4 cursor-pointer"
+                      src="../assets/pneuspeedy-removebg-preview.png"
+                    />
                   </div>
                 </div>
-              )}
-          
+
+                <ul tabIndex={0} className="items-start flex flex-col ">
+                  {navList}
+                </ul>
+
+                <div className="flex gap-3 m-4">
+                  <Button size="sm" variant="outlined">
+                    <LanguageDropdown
+                      language={language}
+                      setLanguage={setLanguage}
+                    />
+                  </Button>
+                  <Button size="sm">Get Started</Button>
+                </div>
+              </div>
+            )}
           </React.Fragment>
 
           <div className="dropdown">

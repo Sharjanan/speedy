@@ -275,7 +275,7 @@ export function RequestForm() {
               className="border-t-blue-gray-200 aria-[expanded=true]:border-t-primary"
             >
               {years.map((year) => (
-                 <Option key={year} value={year}>{year}</Option>
+                 <Option key={year} value={String(year)}>{year}</Option>
               ))}
             </Select>
           </div>

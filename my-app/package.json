@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "1.0.0",
-  "main": "expo/AppEntry.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -44,7 +44,8 @@
     "tailwind-scrollbar-hide": "^2.0.0",
     "twilio": "^5.4.4",
     "twrnc": "^4.6.0",
-    "typescript": "~5.3.3"
+    "typescript": "~5.3.3",
+    "expo-router": "~3.5.24"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
