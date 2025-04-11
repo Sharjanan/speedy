@@ -100,7 +100,7 @@ export function RequestForm() {
   return (
     <section className="px-8 py-20 container mx-auto">
        <div className="relative text-center ">
-      <Typography variant="h2" className="text-4xl font-bold" color="blue-gray">
+      <Typography variant="h2" className="text-5xl text-gray-900 font-bold" color="blue-gray">
         REQUEST A CALL BACK
       </Typography>
       <Typography variant="small" className="text-gray-600 font-normal mt-1">

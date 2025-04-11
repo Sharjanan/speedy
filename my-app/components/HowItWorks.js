@@ -47,8 +47,8 @@ const HowItWorks = ({ onRequestCallback }) => {
 
       {/* Content Wrapper */}
       <div className="relative text-center text-white">
-        <Typography variant="h2" className="text-4xl font-bold mb-6">
-          HOW IT WORKS
+        <Typography variant="h2" className="text-5xl  font-bold mb-6">
+          WHY PNEU SPEEDY MOBILE
         </Typography>
 
         {/* Step Cards - Styled like iPhones */}
