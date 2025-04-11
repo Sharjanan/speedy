@@ -8,6 +8,7 @@ module.exports = withMT({
     "./navigation/**/*.{js,jsx,ts,tsx}",
     "./screens/**/*.{js,jsx,ts,tsx}",
     "./slice/**/*.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./App.js",
     "./store.js"
   ],

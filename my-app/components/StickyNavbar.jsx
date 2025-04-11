@@ -6,9 +6,10 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
+
 import logo from "../assets/pneuspeedy-removebg-preview.png";
 import ContactScreen from "../screens/ContactScreen";
-
+import { Link } from 'expo-router';
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
  
@@ -27,9 +28,9 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="ContactScreen" className="flex items-center">
+        <Link href="/" className="flex items-center">
           PRICING
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -37,9 +38,9 @@ export function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link href="/contact" className="flex items-center">
           CONTACT
-        </a>
+          </Link>
       </Typography>
       <Typography
         as="li"
@@ -58,12 +59,14 @@ export function StickyNavbar() {
       <Navbar className="sticky top-0 z-10 h-32 max-w-full rounded-none px-12 py-0 lg:px-8 lg:py-0">
       <div className="flex items-center justify-between text-blue-gray-900">
       <div className="flex items-center justify-center lg:justify-start w-full lg:w-auto">
+          <Link href="/">
           <img
             alt="Logo"
             className="lg:ml-4 cursor-pointer mt-[-40px]"
             src="../assets/pneuspeedy-removebg-preview.png"
             // style={{width: 'auto', height: '100%'}}
           />
+          </Link>
         </div>
           <div className="flex items-center mt-[-50px] gap-4 ">
             <div className=" mr-40 hidden lg:block ">{navList}</div>
