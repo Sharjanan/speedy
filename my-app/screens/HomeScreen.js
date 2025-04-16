@@ -6,6 +6,7 @@ import { NewsLetter3 } from "../components/NewsLetter3";
 import PromoVideo from "../components/PromoVideo";
 import HowItWorks from "../components/HowItWorks";
 import { BookNow } from "../components/BookNow";
+import { GoogleReview } from "../components/GoogleReview";
 const HomeScreen = () => {
   // Create a reference for the RequestForm section
   const requestFormRef = useRef(null);
@@ -36,7 +37,8 @@ const HomeScreen = () => {
       </div>
       <NewsLetter3 />
       <BookNow onRequestCallback={scrollToRequestForm}/>
-      <PromoVideo />
+      {/* <PromoVideo /> */}
+      <GoogleReview />
 
     </div>
   );

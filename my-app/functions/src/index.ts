@@ -3,12 +3,13 @@ import { onRequest } from "firebase-functions/v2/https";
 import { onDocumentCreated } from "firebase-functions/v2/firestore";
 import sgMail from "@sendgrid/mail";
 import dotenv from "dotenv";
-import { render } from "@react-email/render";
+
 import * as React from "react";
 import KoalaWelcomeEmail from "./KoalaWelcomeEmail";
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import cors from "cors";
+import { renderToStaticMarkup } from "react-dom/server";
 dotenv.config();
 initializeApp();
 
@@ -70,7 +71,17 @@ interface AppointmentData {
   city: string;
   postalCode: string;
 }
-
+interface KoalaWelcomeEmailProps {
+  userFirstname: string;
+  userLastname: string;
+  userEmail: string;
+  userPhone: string;
+  userService: string;
+  userCarType: string;
+  userCarYear: string;
+  userCity: string;
+  userPostalCode: string;
+}
 // ✅ Submit function (store appointment in Firestore)
 export const submit = onRequest(async (req, res) => {
   return corsHandler(req, res, async () => {
@@ -104,7 +115,7 @@ export const sendEmail = onDocumentCreated(
       console.log("✅ Appointment Data:", appointment);
 
       // 🔥 Await the render() function to ensure it resolves before being used
-      const emailHtml = await render(
+      const emailHtml = renderToStaticMarkup(
         React.createElement(KoalaWelcomeEmail, {
           userFirstname: appointment.firstName,
           userLastname: appointment.lastName,
@@ -115,9 +126,8 @@ export const sendEmail = onDocumentCreated(
           userCarYear: appointment.carYear,
           userCity: appointment.city,
           userPostalCode: appointment.postalCode,
-        })
+        } as KoalaWelcomeEmailProps)
       );
-
       console.log("🚀 Generated Email HTML:", emailHtml);
 
       const msg: sgMail.MailDataRequired = {

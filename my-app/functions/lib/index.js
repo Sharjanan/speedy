@@ -41,12 +41,12 @@ const https_1 = require("firebase-functions/v2/https");
 const firestore_1 = require("firebase-functions/v2/firestore");
 const mail_1 = __importDefault(require("@sendgrid/mail"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const render_1 = require("@react-email/render");
 const React = __importStar(require("react"));
 const KoalaWelcomeEmail_1 = __importDefault(require("./KoalaWelcomeEmail"));
 const app_1 = require("firebase-admin/app");
 const firestore_2 = require("firebase-admin/firestore");
 const cors_1 = __importDefault(require("cors"));
+const server_1 = require("react-dom/server");
 dotenv_1.default.config();
 (0, app_1.initializeApp)();
 const corsHandler = (0, cors_1.default)({ origin: true });
@@ -64,7 +64,7 @@ const MECHANIC_EMAIL = getEnv("MECHANIC_EMAIL");
 const SENDGRID_SENDER = getEnv("SENDGRID_SENDER");
 // const getConfig = async (key: string): Promise<string> => {
 //   try {
-//     const docRef = db.collection("Config").doc("SendGrid"); 
+//     const docRef = db.collection("Config").doc("SendGrid");
 //     const doc = await docRef.get();
 //     if (!doc.exists) {
 //       throw new Error("❌ Configuration document does not exist in Firestore.");
@@ -80,7 +80,7 @@ const SENDGRID_SENDER = getEnv("SENDGRID_SENDER");
 //   }
 // };
 // const SENDGRID_API_KEY = config().sendgrid.api_key;
-// const MECHANIC_EMAIL = config().sendgrid.mechanic_email; 
+// const MECHANIC_EMAIL = config().sendgrid.mechanic_email;
 // const SENDGRID_SENDER = config().sendgrid.sender_email;
 // ✅ Set API Key
 mail_1.default.setApiKey(SENDGRID_API_KEY);
@@ -91,9 +91,7 @@ exports.submit = (0, https_1.onRequest)(async (req, res) => {
         try {
             console.log("📥 Received Request Body:", req.body);
             const formData = req.body;
-            const writeResult = await db
-                .collection("Appointments")
-                .add({ formData });
+            const writeResult = await db.collection("Appointments").add({ formData });
             res.json({ result: `Appointment with ID: ${writeResult.id} stored.` });
         }
         catch (error) {
@@ -115,7 +113,7 @@ exports.sendEmail = (0, firestore_1.onDocumentCreated)("/Appointments/{documentI
         const appointment = docData.formData;
         console.log("✅ Appointment Data:", appointment);
         // 🔥 Await the render() function to ensure it resolves before being used
-        const emailHtml = await (0, render_1.render)(React.createElement(KoalaWelcomeEmail_1.default, {
+        const emailHtml = (0, server_1.renderToStaticMarkup)(React.createElement(KoalaWelcomeEmail_1.default, {
             userFirstname: appointment.firstName,
             userLastname: appointment.lastName,
             userEmail: appointment.email,

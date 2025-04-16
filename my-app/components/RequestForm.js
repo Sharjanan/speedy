@@ -99,12 +99,15 @@ export function RequestForm() {
 };
   return (
     <section className="px-8 py-20 container mx-auto">
-      <Typography variant="h5" color="blue-gray">
+       <div className="relative text-center ">
+      <Typography variant="h2" className="text-5xl text-gray-900 font-bold" color="blue-gray">
         REQUEST A CALL BACK
       </Typography>
       <Typography variant="small" className="text-gray-600 font-normal mt-1">
         Fill in your information below for a callback.
       </Typography>
+      </div>
+      
       <form className="flex flex-col mt-8" onSubmit={handleSubmit}>
         <div className="mb-6 flex flex-col items-end gap-4 md:flex-row">
           <div className="w-full">
