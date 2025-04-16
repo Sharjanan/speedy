@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Rating, Typography, Card } from "@material-tailwind/react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { db } from "../firebaseConfig"; // Import Firestore instance
+import { doc, getDoc } from "firebase/firestore";
+
+
 interface GoogleReview {
   rating: number;
   userRatingCount: number;
@@ -20,28 +24,44 @@ interface GoogleReview {
   };
 }
 
-const GOOGLE_API_KEY: string =
-  process.env.GOOGLE_API_KEY || "AIzaSyBnpDw8PX6uMBx7OXuWzrrQtTrDOrAoxXg";
-const PLACE_ID: string = process.env.PLACE_ID || "ChIJRXZ1iUorZ08RzKa-BJrxlLo";
+
 
 export function GoogleReview() {
   const [reviews, setReviews] = useState<GoogleReview[]>([]);
   const [rated, setRated] = useState(5);
+  const [GoogleApiKey, setGoogleApiKey] = useState<string | null>(null);
+  const [placeId, setPlaceId] = useState<string | null>(null);
   const [userRatingCount, setUserRatingCount] = useState<number | null>(null);
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 300], [1, 1.3]); // adjust range as needed
+  const fetchKeys = async () => {
+    try {
+    const docRef = doc(db, "Config", "Google"); 
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+       setGoogleApiKey(data.GOOGLE_API_KEY); 
+       setPlaceId(data.PLACE_ID);
+      } else {
+          console.error("❌ No Key found in Firestore!");
+        }
+      } catch (error) {
+        console.error("⚠️ Error fetching keys:", error);
+      }
+    
   
+  };
   useEffect(() => {
-    if (!GOOGLE_API_KEY || !PLACE_ID) {
-      console.error("❌ Missing Google API Key or Place ID!");
-      return;
-    }
+    fetchKeys();
+  }, []);
+  
+
 
     const fetchGoogleReviews = async () => {
       try {
         const response = await fetch(
-          `https://places.googleapis.com/v1/places/${PLACE_ID}?fields=id,displayName,rating,userRatingCount,reviews&key=${GOOGLE_API_KEY}`
+          `https://places.googleapis.com/v1/places/${placeId}?fields=id,displayName,rating,userRatingCount,reviews&key=${GoogleApiKey}`
         );
         const data = await response.json();
         console.log("✅ Google Reviews API Response:", data);
@@ -61,7 +81,6 @@ export function GoogleReview() {
               },
               authorAttribution: {
                 displayName: review.authorAttribution.displayName,
-                uri: review.authorAttribution.uri,
                 photoUri: review.authorAttribution.photoUri,
               },
               googleMapsUri: review.googleMapsUri,
@@ -75,8 +94,11 @@ export function GoogleReview() {
       }
     };
 
+  useEffect(() => {
     fetchGoogleReviews();
-  }, [GOOGLE_API_KEY, PLACE_ID]);
+  }, [GoogleApiKey, placeId]);
+
+
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
@@ -231,7 +253,7 @@ export function GoogleReview() {
         </div>
         <div className="mt-8 text-center md:mt-16">
           <a
-            href={`https://www.google.com/maps/place/?q=place_id:${PLACE_ID}`}
+            href={`https://www.google.com/maps/place/?q=place_id:${placeId}`}
             target="_blank"
             rel="noopener noreferrer"
             className="pb-2 text-base font-bold leading-7 text-gray-900"
